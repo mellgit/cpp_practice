@@ -59,16 +59,29 @@ int test(int arr[]){
 
     return 0;
 }
+
+// проверка на четное или нечетное число
+int chet_val(int value){
+
+    if (value%2==0){
+        cout<<"chet";
+    }
+    else
+        cout<<"ne chet";
+    return 0;
+}
 int main()
 {
-
+    int value;
+    cout<<"enter value: "; cin>>value;
+    chet_val(value);
     // int arr[] = {1,2,3,4};
     // cout << typeid(arr).name()<<endl; // узнать тип данных
     // test(arr);
 
     // setlocale(LC_ALL,"Rus"); // данная ф-я нужна только для windows
 
-    cout<<"привет мир"<<endl;
+    // cout<<"привет мир"<<endl;
     // int nums1[] = {1, 2, 3, 4, 5};
     // int *begin = std::begin(nums1); // узнать длинну массива 
     // int *end = std::end(nums1);
