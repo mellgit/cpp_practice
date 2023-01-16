@@ -107,6 +107,9 @@ void double_arr(){
 
     const int row = 3;
     const int col = 3;
+    
+    
+    
     int arr[row][col]{};
 
     cout << __cplusplus<<endl;
