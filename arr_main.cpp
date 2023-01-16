@@ -103,13 +103,43 @@ void arr_fun(){
 }
 
 
+void double_arr(){
+
+    const int row = 3;
+    const int col = 3;
+    int arr[row][col]{};
+
+    cout << __cplusplus<<endl;
+
+        for (int i = 0; i < row; i++)
+    {
+
+        for (int j=0; j<col; j++){
+            arr[i][j] = rand()%20;
+        }
+    }
+
+    for (int i = 0; i < row; i++)
+    {
+
+        for (int j = 0; j < col; j++)
+        {
+            cout << arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
 int main(){
     srand(time(NULL)); // достаточно вызвать один раз в main
     // arr_fun();
 
     // rand_fun();
 
-    unic_rand_value();
+    // unic_rand_value();
+
+    double_arr();
 
     return 0;
 }
