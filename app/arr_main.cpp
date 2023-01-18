@@ -134,6 +134,26 @@ void double_arr(){
 }
 
 
+void fill_array(int arr[], const int size){
+    // массив измениться, но если передавать переменную, то не измениться
+    // связано с тем, что переменную можно передавать как по значению, так и по указателю
+    // массив можно передавать только по указателю
+    // вместе с массивом, также необходимо передавать его размер
+    // с двумерными массивами тоже самое, только передавать необходимо длинну строк и столбцов 
+    for (int i=1; i<size; i++){
+        arr[i]=rand()%15;
+    }
+}
+
+void print_array(int arr[], const int size)
+{
+
+    for (int i = 1; i < size; i++)
+    {
+        cout << arr[i]<<endl;
+    }
+}
+
 int main(){
     srand(time(NULL)); // достаточно вызвать один раз в main
     // arr_fun();
@@ -142,7 +162,12 @@ int main(){
 
     // unic_rand_value();
 
-    double_arr();
+    // double_arr();
+
+    const int size = 10;
+    int arr[]{};
+    fill_array(arr, size);
+    print_array(arr, size);
 
     return 0;
 }
