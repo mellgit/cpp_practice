@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std; 
 
 void pointer();
@@ -9,8 +10,11 @@ void hw(int *pa, int *pb);
 void reference();
 void args_reference(int &a);
 void more_args_reference(int &a, int &b, int &c);
+template <typename T>
+void hw2(T &a, T &b);
 
-int main(){
+int main()
+{
 
     // pointer();
     //arr_pointer();
@@ -45,18 +49,40 @@ int main(){
     // cout << a << endl;
     // args_reference(a);
     // cout << a << endl;
-    int a=5, b=40, c=1;
+    // int a=5, b=40, c=1;
+    // cout << a << endl;
+    // cout << b << endl;
+    // cout << c << endl;
+    // cout<<"call function"<<endl;
+    // more_args_reference(a, b, c);
+    // cout << a << endl;
+    // cout << b << endl;
+    // cout << c << endl;
+
+    // int a=5, b=6;
+    // double a = 5.6, b = 6.88;
+    string a="hello", b="world";
     cout << a << endl;
     cout << b << endl;
-    cout << c << endl;
     cout<<"call function"<<endl;
-    more_args_reference(a, b, c);
+    hw2(a, b);
     cout << a << endl;
     cout << b << endl;
-    cout << c << endl;
 
     return 0;
 }
+
+template <typename T>
+void hw2(T &a, T &b){
+    /*
+    при объявлении шаблонной функции, шаблон так же необходимо передавать в прототип функции
+    те сначала шаблон и ниже сама функция
+    */
+    T temp = a; // шаблонная переменная
+    a = b; 
+    b = temp;
+}
+
 
 void more_args_reference(int &a, int &b, int &c){
     /*
