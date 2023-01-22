@@ -3,13 +3,73 @@ using namespace std;
 
 void pointer();
 void arr_pointer();
+void args_pointer(int *pa);
+void more_args_pointer(int *pa, int *pb, int *pc);
+void hw(int *pa, int *pb);
+
 
 
 int main(){
 
     // pointer();
-    arr_pointer();
+    //arr_pointer();
+
+    // int a = 5;
+    // cout << a << endl;
+    // args_pointer(&a);
+    // cout << a << endl;
+
+
+    // int a = 0, b=1, c=0;
+    // cout << a << endl;
+    // cout << b << endl;
+    // cout << c << endl;
+    // cout<<"call function"<<endl;
+    // more_args_pointer(&a, &b, &c);
+    // cout << a << endl;
+    // cout << b << endl;
+    // cout << c << endl;
+
+    int a = 5, b = 6;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    hw(&a, &b);
+    cout<<"call function"<<endl;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+
     return 0;
+}
+
+
+void hw(int *pa, int *pb){
+    /*
+    поменять значения переменнойо местами
+    */
+   int temp = (*pa);
+   (*pa) = *pb;
+   (*pb) = temp;
+
+    
+}
+
+void more_args_pointer(int *pa, int *pb, int *pc){
+    /* 
+    изменение нескольких параметров при использовании указателей 
+    */
+    (*pa) = 44;
+    (*pb)++;
+    (*pc) = -87;
+}
+
+void args_pointer(int *pa){
+    /*
+    передача параметров по указателю
+    не возвращая значений удалось изменить самое значение переменной а
+    тк обращения было по указателю
+    */
+
+   (*pa)++; // соблюдая приоритет: сначала разименовать, потом прибавить 
 }
 
 void arr_pointer(){
