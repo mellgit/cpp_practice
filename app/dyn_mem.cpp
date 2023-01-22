@@ -6,8 +6,8 @@ void arr_pointer();
 void args_pointer(int *pa);
 void more_args_pointer(int *pa, int *pb, int *pc);
 void hw(int *pa, int *pb);
-
-
+void reference();
+void args_reference(int &a);
 
 int main(){
 
@@ -30,16 +30,54 @@ int main(){
     // cout << b << endl;
     // cout << c << endl;
 
-    int a = 5, b = 6;
-    cout << "a = " << a << endl;
-    cout << "b = " << b << endl;
-    hw(&a, &b);
-    cout<<"call function"<<endl;
-    cout << "a = " << a << endl;
-    cout << "b = " << b << endl;
+    // int a = 5, b = 6;
+    // cout << "a = " << a << endl;
+    // cout << "b = " << b << endl;
+    // hw(&a, &b);
+    // cout<<"call function"<<endl;
+    // cout << "a = " << a << endl;
+    // cout << "b = " << b << endl;
+
+
+    // reference();
+    int a = 5;
+    cout << a << endl;
+    args_reference(a);
+    cout << a << endl;
 
     return 0;
 }
+
+
+void args_reference(int &a){
+    /*
+    в таком случае удобнее работать с ссылками, тк нет необходимости в постоянном разименовании
+    как например в указателях
+    */
+    a++;
+
+}
+
+void reference(){
+    /*
+    ссылки и указатели похожи, но есть разница: 
+     - ссылки не нужно разименовывать  
+     - инициализировать указать можно, ссылку нельзя, она всегда должна указывать на адресс переменной
+       а указатель может оставаться пустым
+     - указатель хранит -> NULL, 0, nullptr, сслыка не может хранить в себе эти типы
+
+    */
+
+    int a = 5;
+    int *pa = &a; 
+    int &aref = a;
+    cout << a << endl; // 5
+    cout << *pa << endl; // 5
+    cout << pa << endl;    // 0x16d4237ec
+    cout << &aref << endl; // 0x16d4237ec
+    cout << aref << endl; // 5
+}
+
 
 
 void hw(int *pa, int *pb){
