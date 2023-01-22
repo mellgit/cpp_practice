@@ -1,6 +1,6 @@
 #!/bin/bash
-g++ -std=c++17 dyn_mem.cpp -o dyn_mem # 17++
+g++ -std=c++17 dyn_arr.cpp -o dyn_arr # 17++
 # # g++ arr_main.cpp -o arr_main # 97++
-./dyn_mem
-rm dyn_mem
+./dyn_arr
+rm dyn_arr
 
