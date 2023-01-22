@@ -8,6 +8,7 @@ void more_args_pointer(int *pa, int *pb, int *pc);
 void hw(int *pa, int *pb);
 void reference();
 void args_reference(int &a);
+void more_args_reference(int &a, int &b, int &c);
 
 int main(){
 
@@ -40,14 +41,32 @@ int main(){
 
 
     // reference();
-    int a = 5;
+    // int a = 5;
+    // cout << a << endl;
+    // args_reference(a);
+    // cout << a << endl;
+    int a=5, b=40, c=1;
     cout << a << endl;
-    args_reference(a);
+    cout << b << endl;
+    cout << c << endl;
+    cout<<"call function"<<endl;
+    more_args_reference(a, b, c);
     cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
 
     return 0;
 }
 
+void more_args_reference(int &a, int &b, int &c){
+    /*
+    возвращение нескольких значеинй при помощи ссылок
+    схожи с указателями, только не нужно разименовывать 
+    */
+    a *= 5;
+    b-=100;
+    c++;
+}
 
 void args_reference(int &a){
     /*
