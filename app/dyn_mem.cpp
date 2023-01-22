@@ -12,6 +12,7 @@ void args_reference(int &a);
 void more_args_reference(int &a, int &b, int &c);
 template <typename T>
 void hw2(T &a, T &b);
+void new_delete();
 
 int main()
 {
@@ -61,15 +62,46 @@ int main()
 
     // int a=5, b=6;
     // double a = 5.6, b = 6.88;
-    string a="hello", b="world";
-    cout << a << endl;
-    cout << b << endl;
-    cout<<"call function"<<endl;
-    hw2(a, b);
-    cout << a << endl;
-    cout << b << endl;
+    // string a="hello", b="world";
+    // cout << a << endl;
+    // cout << b << endl;
+    // cout<<"call function"<<endl;
+    // hw2(a, b);
+    // cout << a << endl;
+    // cout << b << endl;
+
+
+    new_delete();
 
     return 0;
+}
+
+
+void new_delete(){
+    /*
+    работа с динамической памятью. new и delete
+    new - выделяет память
+    delete - освобождает эту память 
+    в с++ не сборщика мусора, так что необходимо всегда убирать за собой
+    */
+
+    int *pa = new int; // выделение памяти
+    *pa = 4;
+    cout<<*pa<<endl; // использование выделенной памяти
+    delete pa; // очистка памяти, но указатель на область памяти еще сещуствует
+    pa = nullptr; // удаление указателя
+
+    /*
+    после очистки памяти необходимо избавиться от указателя, для этого используют NULL и nullptr
+    что сделать:
+    - освободить выделенную память (delete)
+    - убрать указатель на выделенную область памяти (nullptr)
+        есть еще NULL, но лучше использовать nullptr, тк это отдельный тип данных
+        и компелятор никогда его не перепутает, тк NULL это целочисленный тип равный нулю
+    
+    ПРЕДУПРЕЖДЕНИЕ: если сначала убрать указатель, а потом освободить память, то произойдет утечка памяти
+    выше показан правильный пример использования динамической памяти
+    */
 }
 
 template <typename T>
