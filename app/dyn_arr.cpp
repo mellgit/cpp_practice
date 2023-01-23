@@ -16,9 +16,11 @@ int main(){
     /*
     копирование динамического массива
     чтобы скопировать один динамический массив в другой необходимо:
-    - освободить память под выделенный первый массив (delete)
-    - удалить указатель (nullptr)
+    - создать два дин массива
+    - освободить память под выделенный первый дин массив (delete)
     - циклов присвоить значения второго в первый
+    - освободить память под выделенные дин массивы (delete)
+    - присвоить значение nullprt для указателей на дин массивы
 
     примечание: если втупую присвоить один массив другому, то произойдет утечка памяти
     тк первый элемент первого массива будет указывать на первый элемент второго массива
@@ -35,9 +37,11 @@ int main(){
     cout<<"second array = \t";
     show_array(second_array, size);
 
+    // cout << *first_array << endl; // указатель на первый элемень в первом массиве
     delete[] first_array; // очистка памяти от первого массива
-
-    first_array = new int[size];
+    // cout << *first_array << endl; // мусор
+    // first_array = new int[size]; // ноль
+    cout << *first_array << endl;
     for (int i=0; i<size; i++){
         first_array[i]=second_array[i]; // присваивание значения второго массива в новый массив
     }
@@ -49,8 +53,27 @@ int main(){
     cout << "second array = \t";
     show_array(second_array, size);
 
-    delete[] first_array; // освобождение памяти
+    delete[] first_array; // освобождение памяти вновь объявленного массива (first_array = new int[size];)
     delete[] second_array;
+
+    cout << "==================================================" << endl;
+    
+    cout << first_array << endl;
+    cout << second_array << endl;
+    cout << "clear pointer" << endl;
+    first_array = nullptr;
+    second_array = nullptr;
+    cout << first_array << endl;
+    cout << second_array << endl;
+
+    /*
+    result =>
+    first array = 	7	9	13	18	10
+    second array = 	12	4	18	3	9
+    ========================
+    first array = 	12	4	18	3	9
+    second array = 	12	4	18	3	9
+    */
 
     return 0;
 }
