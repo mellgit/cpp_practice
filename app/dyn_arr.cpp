@@ -3,16 +3,75 @@ using namespace std;
 
 void dynamic_array();
 void double_dynamic_array();
+void fill_array(int *const arr, const int size);
+void show_array(const int *const arr, const int size);
 
 
 int main(){
 
     // dynamic_array();
 
-    double_dynamic_array();
+    // double_dynamic_array();
 
+    /*
+    копирование динамического массива
+    чтобы скопировать один динамический массив в другой необходимо:
+    - освободить память под выделенный первый массив (delete)
+    - удалить указатель (nullptr)
+    - циклов присвоить значения второго в первый
+
+    примечание: если втупую присвоить один массив другому, то произойдет утечка памяти
+    тк первый элемент первого массива будет указывать на первый элемент второго массива
+    а элементы первого массива остануться весеть в памяти, что приводит к ошибке
+    */
+    const int size = 5;
+    int *first_array = new int[size]; // выделение памяти для двух динамических массивов
+    int *second_array = new int[size];
+    fill_array(first_array, size); // заполнение массивов
+    fill_array(second_array, size);
+
+    cout<<"first array = \t";
+    show_array(first_array, size); // вывод заполненных массивов
+    cout<<"second array = \t";
+    show_array(second_array, size);
+
+    delete[] first_array; // очистка памяти от первого массива
+
+    first_array = new int[size];
+    for (int i=0; i<size; i++){
+        first_array[i]=second_array[i]; // присваивание значения второго массива в новый массив
+    }
+
+    cout<<"========================"<<endl;
+
+    cout << "first array = \t";
+    show_array(first_array, size);
+    cout << "second array = \t";
+    show_array(second_array, size);
+
+    delete[] first_array; // освобождение памяти
+    delete[] second_array;
 
     return 0;
+}
+
+void fill_array(int* const arr, const int size){
+    /*
+    int* const arr - передача массива
+    const int size - передача размера массива
+    */
+
+    for (int i=0; i<size; i++){
+        arr[i]=rand()%20;
+    }
+}
+
+void show_array(const int* const arr, const int size){
+    
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << "\t";
+    }
+    cout<<endl;
 }
 
 void double_dynamic_array(){
