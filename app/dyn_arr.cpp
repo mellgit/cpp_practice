@@ -14,6 +14,8 @@ int main(){
 
     // double_dynamic_array();
 
+
+
     /*
     копирование динамического массива
     чтобы скопировать один динамический массив в другой необходимо:
@@ -95,7 +97,17 @@ int main(){
 
     delete[] arr;
 
+
+
+
     return 0;
+}
+
+
+void hw(){
+    /*
+    удаление и добавление в начале дин массива
+    */
 }
 
 void push_back(int *&arr, int &size, const int value){
