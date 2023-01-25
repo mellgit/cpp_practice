@@ -1,6 +1,6 @@
 #!/bin/bash
-g++ -std=c++17 dyn_arr.cpp -o dyn_arr # 17++
+g++ -std=c++17 string_work.cpp -o string_work # 17++
 # # g++ arr_main.cpp -o arr_main # 97++
-./dyn_arr
-rm dyn_arr
+./string_work
+rm string_work
 
