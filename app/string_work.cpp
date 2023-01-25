@@ -2,11 +2,26 @@
 using namespace std;
 
 void str_fun();
-
+void ascii_fun();
 
 int main(){
-    str_fun();
-    
+    // str_fun();
+    ascii_fun();
+
+}
+
+
+void ascii_fun(){
+    /*
+    преобразование типов
+    в таблице ascii от 0 до 127 символы всегда одинаковые, после уже в разнобой для национальной кодировки
+    */
+
+    setlocale(LC_ALL, "ru");
+
+    for (int i=0; i<250; i++){
+        cout<<"code = "<<i<<"\t"<<"char = "<<(char)i<<endl;
+    }
 }
 
 void str_fun(){
