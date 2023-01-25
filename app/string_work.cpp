@@ -4,11 +4,33 @@ using namespace std;
 void str_fun();
 void ascii_fun();
 void pointer_to_string();
+void len_string(char *str);
 
 int main(){
     // str_fun();
     // ascii_fun();
-    pointer_to_string();
+    // pointer_to_string();
+
+
+    char *str = "hello world!";
+    len_string(str);
+    
+}
+
+void len_string(char *str){
+    /*
+    подсчет количества символов с строке
+    */
+
+    cout << "strlen = " << strlen(str) << endl;
+
+    int count = 0;
+    while (str[count] != '\0'){
+        count++;
+    }
+    
+    cout<<"len = "<<count<<endl;
+    
 }
 
 void pointer_to_string(){
