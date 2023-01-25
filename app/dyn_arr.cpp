@@ -5,6 +5,8 @@ void dynamic_array();
 void double_dynamic_array();
 void fill_array(int *const arr, const int size);
 void show_array(const int *const arr, const int size);
+void copy_dynamic_array();
+void change_size_dynamic_array();
 void push_back(int *&arr, int &size, const int value);
 void pop_back(int *&arr, int &size);
 void push_forward(int *&arr, int &size, const int value);
@@ -13,99 +15,15 @@ void hw();
 
 int main(){
 
-    // dynamic_array();
+    dynamic_array();
 
     // double_dynamic_array();
 
+    // copy_dynamic_array(); 
 
-
-    /*
-    копирование динамического массива
-    чтобы скопировать один динамический массив в другой необходимо:
-    - создать два дин массива
-    - освободить память под выделенный первый дин массив (delete)
-    - циклов присвоить значения второго в первый
-    - освободить память под выделенные дин массивы (delete)
-    - присвоить значение nullprt для указателей на дин массивы
-
-    примечание: если втупую присвоить один массив другому, то произойдет утечка памяти
-    тк первый элемент первого массива будет указывать на первый элемент второго массива
-    а элементы первого массива остануться весеть в памяти, что приводит к ошибке
-    */
-    // const int size = 5;
-    // int *first_array = new int[size]; // выделение памяти для двух динамических массивов
-    // int *second_array = new int[size];
-    // fill_array(first_array, size); // заполнение массивов
-    // fill_array(second_array, size);
-
-    // cout<<"first array = \t";
-    // show_array(first_array, size); // вывод заполненных массивов
-    // cout<<"second array = \t";
-    // show_array(second_array, size);
-
-    // // cout << *first_array << endl; // указатель на первый элемень в первом массиве
-    // delete[] first_array; // очистка памяти от первого массива
-    // // cout << *first_array << endl; // мусор
-    // // first_array = new int[size]; // ноль
-    // cout << *first_array << endl;
-    // for (int i=0; i<size; i++){
-    //     first_array[i]=second_array[i]; // присваивание значения второго массива в новый массив
-    // }
-
-    // cout<<"========================"<<endl;
-
-    // cout << "first array = \t";
-    // show_array(first_array, size);
-    // cout << "second array = \t";
-    // show_array(second_array, size);
-
-    // delete[] first_array; // освобождение памяти вновь объявленного массива (first_array = new int[size];)
-    // delete[] second_array;
-
-    // cout << "==================================================" << endl;
+    // change_size_dynamic_array();
     
-    // cout << first_array << endl;
-    // cout << second_array << endl;
-    // cout << "clear pointer" << endl;
-    // first_array = nullptr;
-    // second_array = nullptr;
-    // cout << first_array << endl;
-    // cout << second_array << endl;
-
-    /*
-    result =>
-    first array = 	7	9	13	18	10
-    second array = 	12	4	18	3	9
-    ========================
-    first array = 	12	4	18	3	9
-    second array = 	12	4	18	3	9
-    */
-
-
-
-
-   // изменение размера дин массива
-    // int size = 5;
-    // int *arr = new int[size]; // выделение памяти для двух динамических массивов
-    // fill_array(arr, size);    // заполнение массивов
-    // show_array(arr, size); // вывод заполненных массивов
-
-    // push_back(arr, size, 111);
-
-    // show_array(arr, size); // вывод заполненных массивов
-
-    // pop_back(arr, size);
-
-    // show_array(arr, size);
-
-    // delete[] arr;
-
-
-
-    // домашнее задание
-    hw();
-
-
+    // hw(); // домашнее задание
 
     return 0;
 }
@@ -125,7 +43,12 @@ void hw(){
     pop_forward(arr, size); // удаление первого элемента из дин массива
     show_array(arr, size);
 
-
+    /*
+    result =>
+    7	9	13	18	10
+    222	7	9	13	18	10
+    7	9	13	18	10
+    */
 }
 
 void push_forward(int *&arr, int &size, const int value){
@@ -162,6 +85,20 @@ void pop_forward(int *&arr, int &size){
     // освобождение памяти
     delete[]arr;
     arr = new_array;
+}
+
+void change_size_dynamic_array(){
+
+    /*изменение размера дин массива*/
+    int size = 5;
+    int *arr = new int[size]; // выделение памяти для двух динамических массивов
+    fill_array(arr, size);    // заполнение массивов
+    show_array(arr, size);    // вывод заполненных массивов
+    push_back(arr, size, 111);
+    show_array(arr, size); // вывод заполненных массивов
+    pop_back(arr, size);
+    show_array(arr, size);
+    delete[] arr;
 }
 
 void push_back(int *&arr, int &size, const int value){
@@ -213,6 +150,73 @@ void pop_back(int *&arr, int &size){
 
     arr = new_array;
 }
+
+void copy_dynamic_array(){
+
+    /*
+    копирование динамического массива
+    чтобы скопировать один динамический массив в другой необходимо:
+    - создать два дин массива
+    - освободить память под выделенный первый дин массив (delete)
+    - циклов присвоить значения второго в первый
+    - освободить память под выделенные дин массивы (delete)
+    - присвоить значение nullprt для указателей на дин массивы
+
+    примечание: если втупую присвоить один массив другому, то произойдет утечка памяти
+    тк первый элемент первого массива будет указывать на первый элемент второго массива
+    а элементы первого массива остануться весеть в памяти, что приводит к ошибке
+    */
+    const int size = 5;
+    int *first_array = new int[size]; // выделение памяти для двух динамических массивов
+    int *second_array = new int[size];
+    fill_array(first_array, size); // заполнение массивов
+    fill_array(second_array, size);
+
+    cout << "first array = \t";
+    show_array(first_array, size); // вывод заполненных массивов
+    cout << "second array = \t";
+    show_array(second_array, size);
+
+    // cout << *first_array << endl; // указатель на первый элемень в первом массиве
+    delete[] first_array; // очистка памяти от первого массива
+    // cout << *first_array << endl; // мусор
+    // first_array = new int[size]; // ноль
+    
+    for (int i = 0; i < size; i++)
+    {
+        first_array[i] = second_array[i]; // присваивание значения второго массива в новый массив
+    }
+
+    cout << "========================" << endl;
+
+    cout << "first array = \t";
+    show_array(first_array, size);
+    cout << "second array = \t";
+    show_array(second_array, size);
+
+    delete[] first_array; // освобождение памяти вновь объявленного массива (first_array = new int[size];)
+    delete[] second_array;
+
+    cout << "==================================================" << endl;
+
+    cout << first_array << endl;
+    cout << second_array << endl;
+    cout << "clear pointer" << endl;
+    first_array = nullptr;
+    second_array = nullptr;
+    cout << first_array << endl;
+    cout << second_array << endl;
+
+    /*
+    result =>
+    first array = 	7	9	13	18	10
+    second array = 	12	4	18	3	9
+    ========================
+    first array = 	12	4	18	3	9
+    second array = 	12	4	18	3	9
+    */
+}
+
 
 void fill_array(int* const arr, const int size){
     /*
