@@ -3,13 +3,22 @@ using namespace std;
 
 void str_fun();
 void ascii_fun();
+void pointer_to_string();
 
 int main(){
     // str_fun();
-    ascii_fun();
-
+    // ascii_fun();
+    pointer_to_string();
 }
 
+void pointer_to_string(){
+    /*
+    указатели на строчки
+    */
+    char *my_str = "hello world";
+    cout<<my_str<<endl; 
+
+}
 
 void ascii_fun(){
     /*
