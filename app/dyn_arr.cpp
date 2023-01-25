@@ -7,6 +7,9 @@ void fill_array(int *const arr, const int size);
 void show_array(const int *const arr, const int size);
 void push_back(int *&arr, int &size, const int value);
 void pop_back(int *&arr, int &size);
+void push_forward(int *&arr, int &size, const int value);
+void pop_forward(int *&arr, int &size);
+void hw();
 
 int main(){
 
@@ -82,21 +85,25 @@ int main(){
 
 
    // изменение размера дин массива
-    int size = 5;
-    int *arr = new int[size]; // выделение памяти для двух динамических массивов
-    fill_array(arr, size);    // заполнение массивов
-    show_array(arr, size); // вывод заполненных массивов
+    // int size = 5;
+    // int *arr = new int[size]; // выделение памяти для двух динамических массивов
+    // fill_array(arr, size);    // заполнение массивов
+    // show_array(arr, size); // вывод заполненных массивов
 
-    push_back(arr, size, 111);
+    // push_back(arr, size, 111);
 
-    show_array(arr, size); // вывод заполненных массивов
+    // show_array(arr, size); // вывод заполненных массивов
 
-    pop_back(arr, size);
+    // pop_back(arr, size);
 
-    show_array(arr, size);
+    // show_array(arr, size);
 
-    delete[] arr;
+    // delete[] arr;
 
+
+
+    // домашнее задание
+    hw();
 
 
 
@@ -108,6 +115,53 @@ void hw(){
     /*
     удаление и добавление в начале дин массива
     */
+
+    int size = 5; 
+    int *arr = new int[size];
+    fill_array(arr, size); // заполнение массивов
+    show_array(arr, size); // вывод заполненных массивов
+    push_forward(arr, size, 222); // добавление в начало дин массива
+    show_array(arr, size);
+    pop_forward(arr, size); // удаление первого элемента из дин массива
+    show_array(arr, size);
+
+
+}
+
+void push_forward(int *&arr, int &size, const int value){
+
+    int *new_array = new int[size + 1]; // новый дин массив будет на 1 элемент больше
+
+    new_array[0] = value; // присвоить сразу первому элементу значение
+    size++; // +1 элемент = размер +1
+
+    for (int i=1; i<size; i++){
+        // в первом дин массиве необходимо забирать с 0-го элемента
+        // а в новый записывать с 1-го, тк в нем уже лежит значение на 0-ом индексе
+        new_array[i] = arr[i - 1]; 
+    }
+
+    // освобождение памяти
+    delete[]arr;
+    arr = new_array;
+
+
+}
+
+void pop_forward(int *&arr, int &size){
+
+    size--; // размер -1, тк дин массив становится на один элемент меньше
+    int *new_array = new int[size];
+
+    for (int i=1; i<size; i++){
+        // в новый дин массив записываем с 0-го элемента
+        // из старого берем с 1-го, тк 0-ой мы удаляем
+        new_array[i-1] = arr[i];
+    }
+
+    // освобождение памяти
+    delete[]arr;
+    arr = new_array;
 }
 
 void push_back(int *&arr, int &size, const int value){
