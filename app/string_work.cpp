@@ -23,11 +23,11 @@ int main(){
     return 0;
 }
 
-string data_db(){
+string get_data_db(){
     return "data from db";
 }
 
-string data_server()
+string get_data_server()
 {
     return "data from server";
 }
@@ -48,8 +48,8 @@ void pointer_to_function(){
     */
     // int(*my_pointer)(int a); // тип возвращаемого значение (*имя указателя)(передаваемые параметры)
 
-    show_any_data(data_db);
-    show_any_data(data_server);
+    show_any_data(get_data_db);
+    show_any_data(get_data_server);
 }
 
 void len_string(char *str){
