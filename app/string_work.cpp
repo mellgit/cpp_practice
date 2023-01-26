@@ -1,20 +1,55 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void str_fun();
 void ascii_fun();
 void pointer_to_string();
 void len_string(char *str);
+void pointer_to_function();
+
 
 int main(){
     // str_fun();
     // ascii_fun();
     // pointer_to_string();
 
+    // char *str = "hello world!";
+    // len_string(str);
 
-    char *str = "hello world!";
-    len_string(str);
-    
+    pointer_to_function();
+
+
+    return 0;
+}
+
+string data_db(){
+    return "data from db";
+}
+
+string data_server()
+{
+    return "data from server";
+}
+
+void show_any_data(string (*any_function)()){
+    /*
+    в функцию show_any_data можно передать любую функцию типа строка и не имеющих параметров
+    тк функций data_db и data_server мб много и бля них всех придется описывать функционал,
+    а таким способом show_any_data играет роль шаблонизатора для всех функций
+    */
+    cout<<any_function()<<endl;
+}
+
+void pointer_to_function(){
+    /*
+    передача параметра в функцию в качестве указателя на функцию
+    или в параметр функции передать другую функцию 
+    */
+    // int(*my_pointer)(int a); // тип возвращаемого значение (*имя указателя)(передаваемые параметры)
+
+    show_any_data(data_db);
+    show_any_data(data_server);
 }
 
 void len_string(char *str){
@@ -37,7 +72,8 @@ void pointer_to_string(){
     /*
     указатели на строчки
     */
-    char *my_str = "hello world";
+    // char *my_str = "hello world"; // warning
+    char my_str[] = "hello world";
     cout<<my_str<<endl; 
 
 }
