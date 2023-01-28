@@ -15,11 +15,28 @@ void ternary_operator();
 
 
 
-int main(){
+int main(int argc, char* argv[])
+{
+    /*
+    передача параметров при запуске программы
+    argc - argument counter - количество параметров
+    argv - argument value - значения параметров
+    */
+    cout<<argc<<endl;
+    for (int i = 0; i < argc; i++)
+    {
+        cout<<argv[i]<<endl;
+    }
+    // запуск - ./proc hello world
+    // результат - 3
+    //             ./proc
+    //             hello
+    //             world
+    
 
     // prepoccesing();
     // conditional_compilation();
-    ternary_operator();
+    // ternary_operator();
     return 0;
 }
 
