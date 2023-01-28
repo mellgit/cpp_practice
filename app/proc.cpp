@@ -13,8 +13,20 @@ void prepoccesing();
 void conditional_compilation();
 void ternary_operator();
 
+/*
+запись по стандарту
+int main(int argc, char* argv[])
+{
+    return 0;
+}
 
+запись для тестов
+void main()
+{
+    
+}
 
+*/
 int main(int argc, char* argv[])
 {
     /*
