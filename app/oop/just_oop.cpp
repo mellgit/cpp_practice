@@ -8,10 +8,15 @@ class Human
 public:
     int age;
     string name;
+
+    void show_info(){
+        cout<<name<<" "<<age<<endl;
+    }
 };
 
 void my_class()
 {
+    /*создание объектов класса*/
     Human first_human;
     cout << "first human" << endl;
     first_human.age = 23;
@@ -27,6 +32,11 @@ void my_class()
     second_human.name = "alice";
     cout << second_human.age << endl;
     cout << second_human.name << endl;
+    cout << "_________________" << endl;
+
+    /*вызов методов класса*/
+    first_human.show_info();
+    second_human.show_info();
 }
 
 int main()
