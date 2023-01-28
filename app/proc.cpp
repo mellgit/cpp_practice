@@ -11,12 +11,50 @@ using namespace std;
 
 void prepoccesing();
 void conditional_compilation();
+void ternary_operator();
+
+
 
 int main(){
 
     // prepoccesing();
-    conditional_compilation();
+    // conditional_compilation();
+    ternary_operator();
     return 0;
+}
+
+void ternary_operator()
+{
+    /*
+    тернарный оператор - сокращение условной конструкции
+    */
+    int a = 10; 
+    if (a > 10)
+    {
+        cout << "a > 10" << endl;
+    }
+    else if (a < 10)
+    {
+        cout << "a < 10" << endl;
+    }
+    
+    else
+    {
+        cout<<"a == 10"<<endl;
+    }
+    cout<<"============"<<endl;
+    /*
+    a > 10 - условие, которое хранится в if
+    как бы спрашивая: выражение a>10 это true или false
+    если true, выполняется все после ?, если false все что после :
+
+    можно не только выводить, но и выполнять какие либо операции
+
+    в данную конструкцию так же можно вложить else if
+    сразу после выражения : устанавливается новое условие a<10, его выражение
+    и в конце условие : и его выражение
+    */
+    a > 10 ? cout << "a > 10" << endl : a <10 ? cout << "a < 10" << endl : cout<<"a == 10"<<endl;;
 }
 
 void conditional_compilation(){
