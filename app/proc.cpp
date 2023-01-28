@@ -19,6 +19,7 @@ int main(int argc, char* argv[])
 {
     /*
     передача параметров при запуске программы
+    добавляются по необходимости
     argc - argument counter - количество параметров
     argv - argument value - значения параметров
     */
