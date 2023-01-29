@@ -5,16 +5,42 @@ using namespace std;
 void my_class();
 void point_function();
 void point2_function();
-
+void point3_this();
 
 
 int main()
 {
     // my_class();    
     // point_function();
-    point2_function();
+    // point2_function();
+    point3_this();
 
     return 0;
+}
+
+class Point3
+{
+private:
+    int x;
+public:
+    Point3(int x)
+    {
+        /*
+        this - указатель на объект класса, у него есть доступ до всех полей класса
+        */
+        this->x = x;
+    }
+    void show_info()
+    {
+        cout << "x = " << x << endl;
+    }
+};
+
+void point3_this()
+{
+    Point3 a(54);
+    a.show_info();
+
 }
 
 class Point2
