@@ -30,6 +30,11 @@ private:
     }
 public:
 
+    Point(int value_x)
+    {
+        x = value_x;
+    }
+
     void start()
     {
         /* вызов приватногоо метода на проверку значения
@@ -58,13 +63,18 @@ public:
 
 void point_function()
 {
-    Point a;
-    a.set_x(123);
-    a.show_info();
-    cout << a.get_x() << endl;
+    // без конструктора
+    // Point a;
+    // a.set_x(123);
+    // a.show_info();
+    // cout << a.get_x() << endl;
 
-    cout<<"__________"<<endl;
-    a.start();
+    // cout<<"__________"<<endl;
+    // a.start();
+
+    // с конструктором
+    Point a(34);
+    a.show_info();
 }
 
 class Human
