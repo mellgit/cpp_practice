@@ -21,16 +21,38 @@ class Point2
 {
 private:
     int x; 
+    int* data;
 public:
     Point2()
     {
         x = 0;
     }
 
-    Point2(int value_x)
+    Point2(int size)
     {
-        x = value_x;
+        data = new int[size];
+        cout << data << endl;
+        for (int i = 0; i < size; i++)
+        {
+            data[i] = i;
+        }
+        cout  << " constructor" << endl;
+        for (int i = 0; i < size; i++)
+        {
+            cout<<data[i]<<endl;
+        }
     }
+
+    ~Point2()
+    {
+        /* диструктор - можно использовать при освобождении памяти
+        */
+        cout << " destructor" << endl;
+        delete[] data;
+        data = nullptr;
+        cout << data << endl;
+    }
+
     void show_info()
     {
         cout << "x = " << x << endl;
@@ -42,11 +64,11 @@ void point2_function()
     /* перезгузка конструторов
     тоже самое что и перегрузка функций
     */
-    Point2 a;
-    a.show_info();
+    // Point2 a;
+    // a.show_info();
 
-    Point2 b(34);
-    b.show_info();
+    Point2 b(5);
+    
 }
 
 
