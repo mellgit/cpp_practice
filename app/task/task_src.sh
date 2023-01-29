@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 price.cpp -o price
-./price
-rm price
+g++ -std=c++17 keep.cpp -o keep
+./keep
+rm keep
 
