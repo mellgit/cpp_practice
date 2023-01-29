@@ -4,17 +4,52 @@ using namespace std;
 
 void my_class();
 void point_function();
-
+void point2_function();
 
 
 
 int main()
 {
     // my_class();    
-    point_function();
+    // point_function();
+    point2_function();
 
     return 0;
 }
+
+class Point2
+{
+private:
+    int x; 
+public:
+    Point2()
+    {
+        x = 0;
+    }
+
+    Point2(int value_x)
+    {
+        x = value_x;
+    }
+    void show_info()
+    {
+        cout << "x = " << x << endl;
+    }
+};
+
+void point2_function()
+{
+    /* перезгузка конструторов
+    тоже самое что и перегрузка функций
+    */
+    Point2 a;
+    a.show_info();
+
+    Point2 b(34);
+    b.show_info();
+}
+
+
 
 class Point
 {
