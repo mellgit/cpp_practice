@@ -12,6 +12,17 @@ public:
     void show_info(){
         cout<<name<<" "<<age<<endl;
     }
+    void show_private()
+    {
+        cout << "bank = " << bank_count << endl;
+    }
+
+/* модификаторы доступа
+private - доступен только внутри класса
+public - доступен всем
+*/
+private:
+    int bank_count = 20;
 };
 
 void my_class()
@@ -37,6 +48,9 @@ void my_class()
     /*вызов методов класса*/
     first_human.show_info();
     second_human.show_info();
+
+    first_human.show_private();
+    second_human.show_private();
 }
 
 int main()
