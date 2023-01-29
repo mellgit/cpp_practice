@@ -32,6 +32,7 @@ public:
 
     Point(int value_x)
     {
+        // конструктор может быть только в public секциипше 
         x = value_x;
     }
 
