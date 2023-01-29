@@ -23,7 +23,24 @@ class Point
     */
 private:
     int x;
+
+    bool check_value()
+    {
+        return true?x>0:false;
+    }
 public:
+
+    void start()
+    {
+        /* вызов приватногоо метода на проверку значения
+        при помощи тернарного оператора
+        */
+        // if (check_value())
+        //     cout<<"x > 0"<<endl;
+        // else
+        //     cout<<"x < 0"<<endl;
+        check_value() ? cout << "x > 0" << endl : cout << "x < 0" << endl;
+    }
 
     int get_x()
     {
@@ -45,6 +62,9 @@ void point_function()
     a.set_x(123);
     a.show_info();
     cout << a.get_x() << endl;
+
+    cout<<"__________"<<endl;
+    a.start();
 }
 
 class Human
