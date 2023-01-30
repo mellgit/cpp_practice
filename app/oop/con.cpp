@@ -2,11 +2,70 @@
 using namespace std;
 
 void my_function();
+void point_function();
+
+
 
 int main()
 {
-    my_function();    
+    // my_function();    
+    point_function();
     return 0;
+}
+
+
+class Point
+{
+private:
+    int x;
+    int y;
+public:
+    Point(int value_x, int value_y)
+    {
+        x = value_x;
+        y = value_y;
+    }
+
+    bool operator ==(const Point & other)
+    {
+        /*
+        Перегрузка оператора равенства == и не равно !=.
+        если необходимо сравнить два объекта класса на равенство
+
+        задача: сравнить координаты двух точек,
+        если равны return true, иначе false
+        */
+        if (this->x == other.x && this->y == other.y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        // return this->x == other.x && this->y == other.y; // короткая запись
+    }
+    bool operator !=(const Point & other)
+    {
+        return !(this->x == other.x && this->y == other.y); // короткая запись
+    }
+    ~Point()
+    {
+
+    }
+};
+
+
+void point_function()
+{
+    Point a(3, 2);
+    Point b(4, 2);
+
+    bool result1 = a == b;
+    bool result2 = a != b;
+    cout << result1 << endl;
+    cout << result2 << endl;
 }
 
 
