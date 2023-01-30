@@ -57,7 +57,24 @@ public:
         destructor - 0x16fb877e0
         destructor - 0x16fb877f0
         */
+    }
+
+    My_class &  operator=(const My_class &other)
+    {
+        /*
+        перегрузка оператора присваивания
+        */
+        cout << "call operator \'=\' - " << this << endl;
+        this->old_size = other.old_size;
+        if (this->data!=nullptr)
+            delete[] this->data;
+
+        for (int i = 0; i < other.old_size; i++)
+        {
+            this->data[i] = other.data[i];
         }
+        return *this; 
+    }
     ~My_class()
     {
         cout << "destructor - " << this << endl;
@@ -84,7 +101,9 @@ My_class foo2()
 void my_function()
 {
     My_class a(5);
-    My_class b(a);
+    My_class b(4);
+    My_class c(3);
+    c=a=b;
     // foo(a);
     // foo2();
 
