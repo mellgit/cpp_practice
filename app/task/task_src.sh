@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 invert.cpp -o invert
-./invert
-rm invert
+g++ -std=c++17 remove.cpp -o remove
+./remove
+rm remove
 
