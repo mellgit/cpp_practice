@@ -10,42 +10,25 @@ using namespace std;
 
 string removeExclamationMarks(string str)
 {
+    /*
+    идиома erase-remove
+    обьяснение: remove смещает элементы не равные '!' в начало строки 
+    в том же порядке в каком они были изначально, 
+    потом возвращает итератор на первый элемент равный '!' 
+    (эти элементы лежат в хвосте строки), 
+    и затем erase затирает ненужные элементы от начала этого итератора и до конца
+    */
 
-    char count = '\0';
-    int i = 0;
-    char new_str[30]={};
-    cout<<str<<endl;
-    while (str[i]!=count)
-    {
-        if (str[i]!='!'){
-            cout<<str[i]<<endl;
-            new_str[i] = str[i];
-        }
-        cout<<str[i]<<endl;
-        
-        i++;
-    }
-
-    int size = strlen(new_str);
-    for (int i = 0; i < size; i++)
-    {
-        cout<<new_str[i];
-    }
-    cout<<endl;
-    
-    
-    
-    
-
+    str.erase(remove(str.begin(), str.end(), '!'), str.end());
     return str;
 }
 
 
 int main()
 {
-    string my_str = "Hello! World!";
+    string my_str = "Hello! World!!";
     
-    removeExclamationMarks(my_str);
+    cout<<removeExclamationMarks(my_str)<<endl;
 
     return 0;
 
