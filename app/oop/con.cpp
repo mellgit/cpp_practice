@@ -3,15 +3,37 @@ using namespace std;
 
 void my_function();
 void point_function();
+void index_function();
 
 
 
 int main()
 {
     // my_function();    
-    point_function();
+    // point_function();
+    index_function();
     return 0;
 }
+
+class Index_class
+{
+private:
+    int arr[5] = {23,54,7,5,12};
+public:
+    int & operator[](int index)
+    {
+        return arr[index];
+    }
+};
+
+void index_function()
+{
+    Index_class a;
+    cout<<a[2]<<endl;
+    a[2] = 12345; // для изменения элемента массива внутри класса, необходим оператор перегрузки ссылкой
+    cout << a[2] << endl;
+}
+
 
 
 class Point
