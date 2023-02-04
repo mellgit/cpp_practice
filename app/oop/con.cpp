@@ -71,21 +71,67 @@ public:
         return temp;
     }
     
+
+    Point & operator ++()
+    {
+        /*
+        префикс
+        */
+        this->x++;
+        this->y++;
+
+        return *this;
+
+    }
+
+    Point &operator++(int value)
+    {
+        /*
+        постфикс
+        int value только для того, чтобы компилятор отличал от префикс
+        нигде его передавать не нужно
+        */
+        Point temp(*this);
+        this->x++;
+        this->y++;
+
+        return temp;
+    }
+
+    int get_x()
+    {
+        return this->x;
+    }
+    int get_y()
+    {
+        return this->y;
+    }
 };
 
 
 void point_function()
 {
-    Point a(3, 2);
-    Point b(4, 2);
+    cout<<"============== BEGIN =============="<<endl;
+    // Point a(3, 2);
+    // Point b(4, 2);
+    // cout << a.get_x() << " " << a.get_y() << endl;
+    // cout << b.get_x() << " " << b.get_y() << endl;
 
     // bool result1 = a == b;
     // bool result2 = a != b;
-    // cout << result1 << endl;
-    // cout << result2 << endl;
+    // cout << "result1: " << result1 << endl;
+    // cout << "result2: " << result2 << endl;
+
+    // Point result = a + b;
+    // cout<<"result: "<<result.get_x()<<" "<<result.get_y()<<endl;
 
 
-    Point result = a + b;
+    Point a(1,1);
+    ++a;
+    Point b = a;
+    cout<<b.get_x()<<" "<<b.get_y()<<endl;
+    
+    
     
     
 }
