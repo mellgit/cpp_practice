@@ -24,7 +24,7 @@ public:
     {
         x = 0;
         y = 0;
-        cout<<this<<" construstor"<<endl;
+        // cout<<this<<" construstor"<<endl;
     }
     Point(int value_x, int value_y)
     {
@@ -112,25 +112,24 @@ public:
 void point_function()
 {
     cout<<"============== BEGIN =============="<<endl;
-    // Point a(3, 2);
-    // Point b(4, 2);
-    // cout << a.get_x() << " " << a.get_y() << endl;
-    // cout << b.get_x() << " " << b.get_y() << endl;
+    Point a(3, 2);
+    Point b(4, 2);
+    cout << "a: " <<a.get_x() << " " << a.get_y() << endl;
+    cout << "b: " << b.get_x() << " " << b.get_y() << endl;
 
-    // bool result1 = a == b;
-    // bool result2 = a != b;
-    // cout << "result1: " << result1 << endl;
-    // cout << "result2: " << result2 << endl;
+    bool result1 = a == b;
+    bool result2 = a != b;
+    cout << "result1.1: " << result1 << endl;
+    cout << "result1.2: " << result2 << endl;
 
-    // Point result = a + b;
-    // cout<<"result: "<<result.get_x()<<" "<<result.get_y()<<endl;
+    Point result = a + b;
+    cout<<"result2: "<<result.get_x()<<" "<<result.get_y()<<endl;
 
 
-    Point a(1,1);
-    ++a;
-    Point b = a;
-    cout<<b.get_x()<<" "<<b.get_y()<<endl;
-    
+    Point c(1,1);
+    cout << "c: " << c.get_x() << " " << c.get_y() << endl;
+    Point d = ++c;
+    cout << "result3.1: " << d.get_x() << " " << d.get_y() << endl;
     
     
     
