@@ -20,10 +20,21 @@ private:
     int x;
     int y;
 public:
+    Point()
+    {
+        x = 0;
+        y = 0;
+        cout<<this<<" construstor"<<endl;
+    }
     Point(int value_x, int value_y)
     {
         x = value_x;
         y = value_y;
+    }
+    
+    ~Point()
+    {
+
     }
 
     bool operator ==(const Point & other)
@@ -50,10 +61,16 @@ public:
     {
         return !(this->x == other.x && this->y == other.y); // короткая запись
     }
-    ~Point()
-    {
 
+    Point & operator +(const Point & other)
+    {
+        Point temp;
+        temp.x = this->x + other.x;
+        temp.y = this->y + other.y;
+        
+        return temp;
     }
+    
 };
 
 
@@ -62,10 +79,15 @@ void point_function()
     Point a(3, 2);
     Point b(4, 2);
 
-    bool result1 = a == b;
-    bool result2 = a != b;
-    cout << result1 << endl;
-    cout << result2 << endl;
+    // bool result1 = a == b;
+    // bool result2 = a != b;
+    // cout << result1 << endl;
+    // cout << result2 << endl;
+
+
+    Point result = a + b;
+    
+    
 }
 
 
