@@ -33,6 +33,23 @@ public:
         this->str = nullptr;
     }
 
+
+    My_string(const My_string &other)
+    {
+        /*
+        конструктор копирования
+        */
+        int len = strlen(other.str);
+        this->str = new char[len + 1];
+
+        for (int i = 0; i < len; i++)
+        {
+            this->str[i] = other.str[i];
+        }
+        this->str[len] = '\0';
+        
+    }
+
     My_string & operator =(const My_string & other)
     {
         if (this->str != nullptr)
@@ -40,16 +57,42 @@ public:
             delete [] str;
         }
         // код из конструктора необходимо перенесте в private фу-ю
-        int len = strlen(str);
+        int len = strlen(other.str);
         this->str = new char[len + 1];
 
         for (int i = 0; i < len; i++)
         {
-            this->str[i] = str[i];
+            this->str[i] = other. str[i];
         }
         this->str[len] = '\0';
 
         return *this;
+    }
+
+    My_string operator +(const My_string & other)
+    {
+        My_string new_str;
+
+        int this_len = strlen(this->str);
+        int other_len = strlen(other.str);
+
+        new_str.str = new char[this_len + other_len + 1]; // +1 -> '\0'
+
+        int i = 0;
+        // цикл для первого слова
+        for (; i < this_len; i++)
+        {
+            new_str.str[i] = this->str[i];
+        }
+        // цикл для второго слова
+        for (int j = 0; j < other_len; j++, i++)
+        {
+            new_str.str[i] = other.str[j];
+        }
+        new_str.str[this_len + other_len] = '\0';
+        return new_str;
+        
+        
     }
     void print()
     {
@@ -64,10 +107,14 @@ public:
 int main()
 {
     cout<<"============ BEGIN ============"<<endl;
-    My_string str("hello");
-    My_string str2("world!!!");
+    My_string str("hello ");
+    My_string str2("world");
 
-    str = str2;
+    // перегрузка оператора присваивания
+    // str = str2;
+
+    My_string result = str+str2;
+    result.print();
     
 
     cout<<endl;
