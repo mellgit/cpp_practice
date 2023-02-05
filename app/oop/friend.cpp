@@ -2,13 +2,42 @@
 using namespace std;
 
 void friend_function();
+void methods_out_class();
 
 int main()
 {
-    friend_function();
+    // friend_function();
+    methods_out_class();
     return 0;
 
 }
+
+
+class My_class
+{
+private:
+    /* data */
+public:
+
+    void print();
+};
+
+
+void My_class::print()
+{
+    /*
+    орпеделение методов вне класс
+    */
+    cout<<"hello"<<endl;
+}
+
+void methods_out_class()
+{
+    My_class a;
+    a.print();
+
+}
+
 
 class Point
 {
