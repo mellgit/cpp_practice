@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 con.cpp -o con # 17++
-./con
-rm con
+g++ -std=c++17 friend.cpp -o friend # 17++
+./friend
+rm friend
 
