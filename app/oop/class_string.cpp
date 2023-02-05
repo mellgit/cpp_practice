@@ -97,6 +97,24 @@ public:
         
         
     }
+
+    bool operator ==(const My_string &other)
+    {
+        if (this->len != other.len)
+            return false;
+
+        for (int i = 0; i < this->len; i++)
+        {
+            if (this->str[i] != other.str[i])
+                return false;
+        }
+        return true;
+    }
+
+    bool operator !=(const My_string &other)
+    {
+        return !(this->operator==(other));
+    }
     void print()
     {
         cout<<str;
@@ -118,7 +136,7 @@ public:
 int main()
 {
     cout<<"============ BEGIN ============"<<endl;
-    My_string str("hello ");
+    My_string str("hello");
     My_string str2("world");
 
     // перегрузка оператора присваивания
@@ -130,6 +148,12 @@ int main()
     My_string result = str+str2;
     result.print();
     cout<< " len: " << result.length() << endl;
+
+
+    bool equal = str == str2;
+    cout << "result equal: " << equal << endl;
+    bool no_equal = str != str2;
+    cout << "result no equal: " << no_equal << endl;
 
     cout<<endl;
     return 0;
