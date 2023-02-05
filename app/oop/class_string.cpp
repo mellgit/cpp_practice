@@ -6,11 +6,12 @@ class My_string
 {
 private:
     char *str;
+    int len;
 public:
     My_string(char *str)
     {
-        int len = strlen(str);
-        // cout<<&str<<endl; // 0x16fba7778 - разныеячейки памяти
+        len = strlen(str);
+        // cout<<&str<<endl; // 0x16fba7778 - разные ячейки памяти
         cout<<"len str: "<<len<<endl;
         this->str = new char[len+1]; // новый символьный массив с +1 значением под '\0'
 
@@ -26,6 +27,7 @@ public:
     My_string()
     {
         str = nullptr;
+        len = 0;
     }
     ~My_string()
     {
@@ -37,9 +39,9 @@ public:
     My_string(const My_string &other)
     {
         /*
-        конструктор копирования
+        конструктор копирования необходим для создания точной копии объекта класса, но вдругой области памяти
         */
-        int len = strlen(other.str);
+        len = strlen(other.str);
         this->str = new char[len + 1];
 
         for (int i = 0; i < len; i++)
@@ -57,7 +59,7 @@ public:
             delete [] str;
         }
         // код из конструктора необходимо перенесте в private фу-ю
-        int len = strlen(other.str);
+        len = strlen(other.str);
         this->str = new char[len + 1];
 
         for (int i = 0; i < len; i++)
@@ -75,6 +77,7 @@ public:
 
         int this_len = strlen(this->str);
         int other_len = strlen(other.str);
+        new_str.len = this_len + other_len;
 
         new_str.str = new char[this_len + other_len + 1]; // +1 -> '\0'
 
@@ -98,6 +101,14 @@ public:
     {
         cout<<str;
     }
+
+    int length()
+    {
+        /*
+        узнать длинну строки
+        */
+        return len;
+    }
 };
 
 
@@ -113,9 +124,12 @@ int main()
     // перегрузка оператора присваивания
     // str = str2;
 
+    cout << "methods length: " << str.length() << endl;
+    cout << "methods length: " << str2.length() << endl;
+
     My_string result = str+str2;
     result.print();
-    
+    cout<< " len: " << result.length() << endl;
 
     cout<<endl;
     return 0;
