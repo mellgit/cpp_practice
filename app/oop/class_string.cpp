@@ -115,6 +115,14 @@ public:
     {
         return !(this->operator==(other));
     }
+
+    char& operator [](int index)
+    {
+        /*
+        ссылка нужна для того чтобы изменять объект класса
+        */
+        return this->str[index];
+    }
     void print()
     {
         cout<<str;
@@ -154,6 +162,14 @@ int main()
     cout << "result equal: " << equal << endl;
     bool no_equal = str != str2;
     cout << "result no equal: " << no_equal << endl;
+
+    cout << "index operator: "<<str[0] << endl;
+
+    cout<<"change symbol:"<<" ";
+    str.print();
+    cout<<" ";
+    str[0] = 'R';
+    str.print();
 
     cout<<endl;
     return 0;
