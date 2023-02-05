@@ -1,14 +1,64 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void friend_function();
 void methods_out_class();
+void friend_methods_class();
+
 
 int main()
 {
     // friend_function();
-    methods_out_class();
+    // methods_out_class();
+    friend_methods_class();
     return 0;
+
+}
+
+
+class Apple;
+class Human;
+
+
+class Human
+{
+public:
+    void take_apple(Apple &apple);
+    
+};
+
+
+class Apple
+{
+private:
+    int weight;
+    string color;
+public:
+    Apple(int weight, string color)
+    {
+        this->color = color;
+        this->weight = weight;
+    }
+
+    friend void Human::take_apple(Apple &apple);
+};
+
+void Human::take_apple(Apple &apple)
+{
+    /*
+    дружественный метод класса
+    тоже самое что и дружественные функции, только реализованные из класса
+    */
+    cout << "take apple " << apple.weight << " " << apple.color << endl;
+
+}
+void friend_methods_class()
+{
+    Apple apple(123, "green");
+    Human human;
+    human.take_apple(apple);
+    
 
 }
 
