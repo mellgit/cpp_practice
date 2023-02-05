@@ -49,7 +49,16 @@ public:
             this->str[i] = other.str[i];
         }
         this->str[len] = '\0';
-        
+    }
+
+    My_string(My_string &&other)
+    {
+        /*
+        конструктор перемещения, тк конструктор копирования занимает память и время
+        */
+        this->len = other.len;
+        this->str = other.str;
+        other.str = nullptr;
     }
 
     My_string & operator =(const My_string & other)
