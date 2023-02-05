@@ -5,17 +5,61 @@ using namespace std;
 void friend_function();
 void methods_out_class();
 void friend_methods_class();
+void friend_class();
 
 
 int main()
 {
     // friend_function();
     // methods_out_class();
-    friend_methods_class();
+    // friend_methods_class();
+    friend_class();
     return 0;
 
 }
 
+class Apple2;
+class Human2;
+
+
+class Human2
+{
+public:
+    void take_apple(Apple2 &apple);
+};
+
+class Apple2
+{
+private:
+    int weight;
+    string color;
+
+public:
+    Apple2(int weight, string color)
+    {
+        this->color = color;
+        this->weight = weight;
+    }
+
+    friend Human2; // дружественный класс - нарушает принцип инкапсудяции (быть аккуратнее)
+
+
+};
+
+void Human2::take_apple(Apple2 &apple)
+{
+    /*
+    дружественный метод класса
+    тоже самое что и дружественные функции, только реализованные из класса
+    */
+    cout << "take apple " << apple.weight << " " << apple.color << endl;
+}
+void friend_class()
+{
+    Apple2 apple(123, "green");
+    Human2 human;
+    human.take_apple(apple);
+}
 
 class Apple;
 class Human;
