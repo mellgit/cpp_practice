@@ -4,13 +4,84 @@ using namespace std;
 
 void static_method();
 void inner_class();
+void class_array_obj();
 
 int main()
 {
     // static_method();
-    inner_class();
+    // inner_class();
+    class_array_obj();
     return 0;
 }
+
+class Pixel
+{
+private:
+    int r;
+    int g;
+    int b;
+
+public:
+
+    // конструктор по умолчанию
+    Pixel()
+    {
+        r = g = b = 0;
+    }
+    Pixel(int r, int g, int b)
+    {
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+    string get_info()
+    {
+        return "Pixe: r=" + to_string(r) + " g=" + to_string(g) + " b=" + to_string(b);
+    }
+};
+
+
+void class_array_obj()
+{
+
+    const int len = 5;
+    // массив типа Pixel
+    Pixel arr[len];
+    cout << arr[0].get_info() << endl; // Pixe: r=0 g=0 b=0
+
+    arr[0] = Pixel(43,54,2);
+    cout << arr[0].get_info() << endl; // Pixe: r=43 g=54 b=2
+
+    // заполненный статический массив типа Pixel
+    Pixel arr2[len] = {
+        Pixel(0, 4, 5),
+        Pixel(6, 45, 34),
+        Pixel(70, 54, 45),
+        Pixel(20, 45, 5),
+        Pixel(50, 64, 75)
+    };
+    cout << "from static array" << endl;
+    for (int i = 0; i < len; i++)
+    {
+        cout<<arr2[i].get_info()<<endl;
+    }
+
+    cout << "from dynamic array" << endl;
+    // динамический массив типа Pixel
+    Pixel *arr3 = new Pixel[len];
+    cout << arr3[0].get_info() << endl; // Pixe: r=0 g=0 b=0
+
+    arr3[0] = Pixel(433, 544, 52);
+    cout << arr3[0].get_info() << endl; // Pixe: r=433 g=544 b=52
+
+    delete [] arr3;
+    arr3 = nullptr;
+    
+}
+
+
+
+
 
 
 class Image
