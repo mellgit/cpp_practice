@@ -3,11 +3,67 @@
 using namespace std;
 
 void static_method();
+void inner_class();
 
 int main()
 {
-    static_method();
+    // static_method();
+    inner_class();
     return 0;
+}
+
+
+class Image
+{
+private:
+    class Pixel
+    {
+        /*
+        внутренний класс
+        его так же можно использовать в public секции
+        для определенных задач
+        */
+    private:
+        int r;
+        int g;
+        int b;
+    public:
+        Pixel(int r, int g, int b)
+        {
+            this->r = r;
+            this->g = g;
+            this->b = b;
+        }
+        string get_info()
+        {
+            return "Pixe: r="+to_string(r)+" g="+to_string(g)+" b="+to_string(b);
+        }
+    };
+
+    static const int len = 5;
+    Pixel pixels[len] = {
+        Pixel(0, 4, 5),
+        Pixel(6, 45, 34),
+        Pixel(70, 54, 45),
+        Pixel(20, 45, 5),
+        Pixel(50, 64, 75)};
+
+public:
+    void get_image_info()
+    {
+        for (int i = 0; i < len; i++)
+        {
+            cout << i << " - " << pixels[i].get_info() << endl;
+        }
+        
+    }
+};
+
+
+void inner_class()
+{
+    Image img;
+    img.get_image_info();
 }
 
 
