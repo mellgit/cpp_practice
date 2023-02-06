@@ -5,14 +5,83 @@ using namespace std;
 void static_method();
 void inner_class();
 void class_array_obj();
+void aggregation_and_composition();
+
 
 int main()
 {
     // static_method();
     // inner_class();
-    class_array_obj();
+    // class_array_obj();
+    aggregation_and_composition();
     return 0;
 }
+
+
+class Cap
+{
+    /*
+    агрегация - когда один класс используется в другом, но используются по разному
+    и данный класс является независимым
+    класс Cap можно использовать и в других классах
+    а класс Brain только в классе Human
+    */
+private:
+    string color = "red";
+public:
+    string get_color()
+    {
+        return color;
+    }
+};
+
+
+class Human
+{
+    /*
+    пример композиции - когда один объект жестко привязан к другому
+    Brain привязан к Human
+    */
+private:
+
+    class Brain
+    {
+    public:
+        void think()
+        {
+            /*
+            данный метод называется делегированным
+            тк think вызывает think
+            */
+            cout<<"I think"<<endl;
+        }
+    };
+    Brain brain;
+    Cap cap; 
+
+public:
+    void think()
+    {
+        brain.think();
+    }
+
+    void inspect_cap()
+    {
+        cout<<"color cap: "<<cap.get_color()<<endl;
+    }
+};
+
+void aggregation_and_composition()
+{
+    Human human;
+    human.think();
+    human.inspect_cap();
+    
+
+}
+
+
+
 
 class Pixel
 {
