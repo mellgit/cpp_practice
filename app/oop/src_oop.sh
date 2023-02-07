@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 static.cpp -o static # 17++
-./static
-rm static
+g++ -std=c++17 inheritance.cpp -o inheritance # 17++
+./inheritance
+rm inheritance
 
