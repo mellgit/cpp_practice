@@ -5,13 +5,54 @@ using namespace std;
 
 void inher();
 void access_modifiers();
+void constructor_call_order();
 
 int main()
 {
     // inher();
-    access_modifiers();
+    // access_modifiers();
+    constructor_call_order();
     return 0;
 }
+
+class One
+{
+public:
+    One()
+    {
+        cout<<"call const one"<<endl;
+    }
+};
+
+class Two : public One
+{
+public:
+    Two()
+    {
+        cout << "call const two" << endl;
+    }
+};
+
+class Three : public Two
+{
+public:
+    Three()
+    {
+        cout << "call const three" << endl;
+    }
+};
+
+void constructor_call_order()
+{
+    One one; // const one
+    cout << "______________" << endl;
+    Two two; // const one and const two
+    cout << "______________" << endl;
+    Three three; // const one and const two and const three
+
+}
+
+
 
 class A
 {
