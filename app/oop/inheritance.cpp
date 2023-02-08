@@ -22,6 +22,16 @@ public:
     {
         cout<<"call const one"<<endl;
     }
+    ~One()
+    {
+        /*
+        вызов деструкторов происходит в обратном порядке
+        constr - 1 2 3
+        destr - 3 2 1
+        */
+        cout << "call destructor one" << endl;
+        cout << "========================" << endl;
+    }
 };
 
 class Two : public One
@@ -30,6 +40,10 @@ public:
     Two()
     {
         cout << "call const two" << endl;
+    }
+    ~Two()
+    {
+        cout << "call destructor two" << endl;
     }
 };
 
@@ -40,6 +54,11 @@ public:
     {
         cout << "call const three" << endl;
     }
+    ~Three()
+    {
+        cout << "call destructor three" << endl;
+        
+    }
 };
 
 void constructor_call_order()
@@ -49,7 +68,7 @@ void constructor_call_order()
     Two two; // const one and const two
     cout << "______________" << endl;
     Three three; // const one and const two and const three
-
+    cout << "______________" << endl;
 }
 
 
