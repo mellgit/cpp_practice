@@ -6,13 +6,63 @@ using namespace std;
 void inher();
 void access_modifiers();
 void constructor_call_order();
+void call_basick_constr();
+
 
 int main()
 {
     // inher();
     // access_modifiers();
-    constructor_call_order();
+    // constructor_call_order();
+    call_basick_constr();
     return 0;
+}
+
+
+
+class A_cls
+{
+private:
+    string msg;
+public:
+    A_cls()
+    {
+        msg = "empty msg";
+    }
+
+    A_cls(string msg)
+    {
+        this->msg = msg;
+    }
+    void print()
+    {
+        cout<<msg<<endl;
+    }
+};
+
+class B_cls : public A_cls
+{
+public:
+    B_cls():A_cls("world")
+    {
+        /*
+        если необходимо вызвать конструктор по умолчанию - B:A()
+        но это уже и так делает компилятор, поэтому явно указывать не нужно
+        если конструкторов несколько - B:A(args)
+        передать необходимые аргументы и таким образов вызовут другой конструктор 
+        */
+        
+    }
+};
+
+
+void call_basick_constr()
+{
+    A_cls a("hello");
+    a.print();
+    cout<<"___________"<<endl;
+    B_cls b;
+    b.print();
 }
 
 class One
