@@ -4,12 +4,65 @@ using namespace std;
 
 
 void inher();
+void access_modifiers();
 
 int main()
 {
-    inher();
+    // inher();
+    access_modifiers();
     return 0;
 }
+
+class A
+{
+public:
+    /*
+    доступен всем и везде, также и вне класса на уровне объекта 
+    */
+    string one_msg = "one";
+private:
+    /*
+    скрыт от всех и никому не доступно
+    */
+    string two_msg = "two";
+
+protected:
+    /*
+    на уровне объекта вызвать нельзя, но в дочерних вызвать можно
+    */
+    string three_msg = "three";
+};
+
+class B : public A
+{
+    /*
+    уровень доступа для дочерних
+               public  private  protected
+    public     pub     pri      pro
+    private    pri     pri      pri
+    protected  pro     pri      pro
+    в завесимости от уровня доступа, меняются свойства доступа родителя
+    */
+public:
+    void print_one()
+    {
+        cout<<one_msg<<endl;
+    }
+
+    void print_three()
+    {
+        cout << three_msg << endl;
+    }
+};
+
+void access_modifiers()
+{
+    B b;
+    b.print_one();
+    b.print_three();
+}
+
+
 
 class Human
 {
