@@ -4,17 +4,40 @@ using namespace std;
 
 
 void test_override();
+void abstract_class();
 
 int main()
 {
-    test_override();
+    // test_override();
+    abstract_class();
     return 0;
 }
 
-class Gun
+
+class Weapon 
+{
+    /*
+    класс имеет чисто фиртуальную ф-ю -> класс абстрактный
+    */
+public:
+    virtual void shoot() = 0; // чисто виртуальная ф-я
+
+    /*
+    в абстрактом классе также могу быть и обычные методы
+    они также будут у наследников
+    */
+    void function()
+    {
+        cout<<"call function"<<endl;
+    }
+};
+
+
+
+class Gun : public Weapon
 {
 public:
-    virtual void shoot()
+    void shoot() override
     {
         /*
         virtual необходим для полиморфизма, чтобы рассширить функционал
@@ -25,7 +48,7 @@ public:
 };
 
 class Submachine_Gun : public Gun
-{
+{ 
 public:
     void shoot() override
     {
@@ -41,7 +64,7 @@ public:
     }
 };
 
-class Bazooka : public Gun
+class Bazooka : public Weapon
 {
 public:
     void shoot() override
@@ -50,15 +73,39 @@ public:
     }
 };
 
-class Player
+
+class Knife : public Weapon
 {
 public:
-    void shoot(Gun *gun)
+    void shoot() override
     {
-        gun->shoot();
+        cout<<"vjuhh"<<endl;
     }
 };
 
+
+class Player
+{
+public:
+    void shoot(Weapon *wepon)
+    {
+        wepon->shoot();
+    }
+};
+
+void abstract_class()
+{
+    /*
+    виртуальная фу-я это ф-я без реализации
+    абстрактный класс имеет виртуальные фу-ии, следует, что нельзя создать экземпляр класса
+    */
+
+   Bazooka bazooka;
+   Knife knife;
+   Player player;
+   player.shoot(&bazooka);
+   player.shoot(&knife);
+}
 
 void test_override()
 {
@@ -71,7 +118,7 @@ void test_override()
     для переопределенного метода shoot
     */
     Player player;
-    player.shoot(&machine_gun);
-    player.shoot(&gun);
-    player.shoot(&bazooka);
+    // player.shoot(&machine_gun);
+    // player.shoot(&gun);
+    // player.shoot(&bazooka);
 }
