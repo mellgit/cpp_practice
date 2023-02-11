@@ -6,16 +6,60 @@ using namespace std;
 void test_override();
 void abstract_class();
 void virtual_destructor();
-
-
+void pure_virtual_destructor();
 
 int main()
 {
     // test_override();
     // abstract_class();
-    virtual_destructor();
+    // virtual_destructor();
+    pure_virtual_destructor();
     return 0;
 }
+
+
+class One
+{
+public:
+    One()
+    {
+
+    }
+    virtual ~One() = 0;
+    
+};
+
+One::~One() {};
+
+class Two : public One
+{
+public:
+    Two()
+    {
+    }
+    ~Two()
+    {
+    }
+};
+
+
+void pure_virtual_destructor()
+{
+    /*
+    чисто виртуальный диструктор
+    объект класса родителя объявить не получится,
+    но передать ссылку родителя для дочки можно,
+    только в том случае, если вынести виртуальный диструктор вне класса
+    One::~One() {};
+
+    */
+    One *oneptr = new Two;
+
+    delete oneptr;
+}
+
+
+
 
 class A
 {
