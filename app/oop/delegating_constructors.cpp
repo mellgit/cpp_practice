@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void delegating_constructors();
+
+int main()
+{
+    delegating_constructors();
+    return 0;
+}
+
+class Human
+{
+public:
+    string name;
+    int age;
+    int weight;
+
+    Human(string name)
+    {
+        this->name = name;
+        this->age = 0;
+        this->weight = 0;
+    }
+    Human(string name, int age):Human(name)
+    {
+        this->age = age;   
+    }
+    Human(string name, int age, int weight):Human(name, age)
+    {
+        this->weight = weight;;
+    }
+
+    void print()
+    {
+        cout<<name<<" "<<age<<" "<<weight<<endl;
+    }
+};
+
+void delegating_constructors()
+{
+    /*
+    суть делегирующего конструктора заключается в наследовании конструктора
+    в конструкторе 2, через двоеточие, можно использовать знычение полученное из 1-го конструктора
+    данный подход позволят использовать меньше кода и правок становится меньше
+    */
+    Human human1("bob");
+    Human human2("bob", 33);
+    Human human3("bob", 33, 67);
+
+    human1.print();
+    human2.print();
+    human3.print();
+}
