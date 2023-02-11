@@ -5,13 +5,70 @@ using namespace std;
 
 void test_override();
 void abstract_class();
+void virtual_destructor();
+
+
 
 int main()
 {
     // test_override();
-    abstract_class();
+    // abstract_class();
+    virtual_destructor();
     return 0;
 }
+
+class A
+{
+public:
+    A()
+    {
+        cout<< "dedicated dynamic memory  A class" << endl;
+    }
+    virtual ~A()
+    {
+        cout << "freed dynamic memory A class" << endl;
+    }
+};
+
+class B : public A
+{
+public:
+    B()
+    {
+        cout << "dedicated dynamic memory  B class" << endl;
+    }
+    ~B() override
+    {
+        cout << "freed dynamic memory B class" << endl;
+    }
+};
+
+
+void virtual_destructor()
+{
+    /*
+    таким образом реализовалась утечка памяти для класса наследника
+    память для родителя освободилась, а для дочки нет
+    output:
+        dedicated dynamic memory  A class
+        dedicated dynamic memory  B class
+        freed dynamic memory A class
+
+    если использовать витруальный диктруктор, то все отработает правильно
+    output:
+        dedicated dynamic memory  A class
+        dedicated dynamic memory  B class
+        freed dynamic memory B class
+        freed dynamic memory A class
+    
+    тк диструктор родителя стал виртуальным, память дочки так же освободилась 
+    */
+    A *bptr = new B;
+    
+    delete bptr;
+
+}
+
 
 
 class Weapon 
