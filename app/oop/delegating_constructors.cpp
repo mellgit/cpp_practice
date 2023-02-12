@@ -3,11 +3,70 @@
 using namespace std;
 
 void delegating_constructors();
+void virtual_method();
+
 
 int main()
 {
-    delegating_constructors();
+    // delegating_constructors();
+    virtual_method();
     return 0;
+}
+
+
+class Msg
+{
+private:
+    string msg;
+public:
+    Msg(string msg)
+    {
+        this->msg = msg;
+    }
+
+    virtual string get_msg()
+    {
+        return msg;
+    }
+};
+
+class BraketsMsg : public Msg
+{
+public:
+    BraketsMsg(string msg):Msg(msg)
+    {
+
+    }
+    string get_msg() override
+    {
+        /*
+        return "["+get_msg()+"]";
+        таким образом вызявается дочерний метод get_msg
+        те выполнение получается рекурсивный
+        чтобы этого избежать необходимо использовать метода
+        родителя через двойное двоиточие  
+        */
+
+        return "[" + ::Msg::get_msg() + "]";
+    }
+};
+
+class Printer
+{
+public:
+    void print(Msg *msg)
+    {
+        cout<<msg->get_msg()<<endl; 
+    }
+};
+
+void virtual_method()
+{
+    // Msg m("hello");
+    BraketsMsg m("hello");
+
+    Printer p;
+    p.print(&m);
 }
 
 class Human
