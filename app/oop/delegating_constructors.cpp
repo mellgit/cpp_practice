@@ -17,6 +17,10 @@ int main()
 class Car
 {
 public:
+    Car()
+    {
+        cout<<"call Car"<<endl;
+    }
     void drive()
     {
         cout<<"drive"<<endl;
@@ -26,6 +30,10 @@ public:
 class Airplane
 {
 public:
+    Airplane()
+    {
+        cout << "call Airplane" << endl;
+    }
     void fly()
     {
         cout << "fly" << endl;
@@ -39,6 +47,15 @@ class FlyingCar : public Car, public Airplane
     настледуются все методы и поля
     наследовать можно сколь угодно классов
     */
+   /*
+   порядок вызова конструкторов так же может менятся, в зависимости 
+   от того, в каком порядке было вызванно наследование в класса FlyingCar
+   */
+public:
+    FlyingCar()
+    {
+        cout << "call FlyingCar" << endl;
+    }
 };
 
 void multiple_inheritance()
