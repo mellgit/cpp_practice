@@ -19,8 +19,14 @@ class Car
 public:
     Car()
     {
-        cout<<"call Car"<<endl;
+        cout << "call constructor Car" << endl;
     }
+
+    ~Car()
+    {
+        cout << "call destructor Car" << endl;
+    }
+
     void drive()
     {
         cout<<"drive"<<endl;
@@ -32,7 +38,12 @@ class Airplane
 public:
     Airplane()
     {
-        cout << "call Airplane" << endl;
+        cout << "call constructor Airplane" << endl;
+    }
+
+    ~Airplane()
+    {
+        cout << "call destructor Airplane" << endl;
     }
     void fly()
     {
@@ -54,12 +65,20 @@ class FlyingCar : public Car, public Airplane
 public:
     FlyingCar()
     {
-        cout << "call FlyingCar" << endl;
+        cout << "call constructor FlyingCar" << endl;
+    }
+    ~FlyingCar()
+    {
+        cout << "call destructor FlyingCar" << endl;
     }
 };
 
 void multiple_inheritance()
 {
+    /*
+    вызов конструкторов и деструкторов сохранился
+    первый вызван последний закрылся
+    */
     FlyingCar fc;
     fc.drive();
     fc.fly();
