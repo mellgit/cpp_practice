@@ -4,15 +4,49 @@ using namespace std;
 
 void delegating_constructors();
 void virtual_method();
-
+void multiple_inheritance();
 
 int main()
 {
     // delegating_constructors();
-    virtual_method();
+    // virtual_method();
+    multiple_inheritance();
     return 0;
 }
 
+class Car
+{
+public:
+    void drive()
+    {
+        cout<<"drive"<<endl;
+    }
+};
+
+class Airplane
+{
+public:
+    void fly()
+    {
+        cout << "fly" << endl;
+    }
+};
+
+class FlyingCar : public Car, public Airplane
+{
+    /*
+    множественное наследование
+    настледуются все методы и поля
+    наследовать можно сколь угодно классов
+    */
+};
+
+void multiple_inheritance()
+{
+    FlyingCar fc;
+    fc.drive();
+    fc.fly();
+}
 
 class Msg
 {
