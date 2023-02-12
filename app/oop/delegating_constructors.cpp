@@ -31,6 +31,11 @@ public:
     {
         cout<<"drive"<<endl;
     }
+
+    void use()
+    {
+        cout<<"use Car"<<endl;
+    }
 };
 
 class Airplane
@@ -48,6 +53,10 @@ public:
     void fly()
     {
         cout << "fly" << endl;
+    }
+    void use()
+    {
+        cout << "use Airplane" << endl;
     }
 };
 
@@ -82,6 +91,19 @@ void multiple_inheritance()
     FlyingCar fc;
     fc.drive();
     fc.fly();
+    cout<<endl<<endl;
+
+    /*
+    приведение к типу
+    два родятеля имеют два одинаковых метода use
+    компилятор не знает какой именно необходимо использовать
+    для этого нужно использовать приведение к типу 
+    при помощи круглых скобок (())
+    */
+    ((Car)fc).use();
+    ((Airplane)fc).use();
+    
+    cout<<endl<<endl;
 }
 
 class Msg
