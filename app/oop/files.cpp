@@ -57,8 +57,7 @@ void fstream_file()
         }
         if (value==2)
         {
-            cout<<"read file"<<endl;
-            
+            cout<<"read file"<<endl;            
 
             // чтение из файла не работает
             // while (!fs.eof())
@@ -67,18 +66,15 @@ void fstream_file()
             //     fs>>msg;
             //     cout<<msg<<endl;
             // }
+            /*
+            Стоит отметить, что при компиляции через g++ следует использовать флаг -static,
+            если программа работает со файлами и использует типы из заголовочного файла fstream:
+            g++ app.cpp -o app -static
 
-            // while (getline(fs, msg))
-            // {
-            //     cout<<msg<<endl;
-            // }
+            так же имеется ошибка с испоьзованием библиотек
+            library not found for -lcrt0.o
 
-            // char ch;
-            // while (fs.get(ch))
-            // {
-            //     cout<<ch<<endl;
-            // }
-            
+            */
         }
         
         
