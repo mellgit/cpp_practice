@@ -6,6 +6,7 @@ using namespace std;
 void of_file();
 void if_file();
 void write_obj_to_file();
+void fstream_file();
 
 int main()
 {
@@ -15,10 +16,78 @@ int main()
 
     // of_file();
     // if_file();
-    write_obj_to_file();
+    // write_obj_to_file();
+    fstream_file();
 
     return 0;
 }
+
+
+
+void fstream_file()
+{
+    string path = "data/new_file.txt";
+    fstream fs;
+
+    // fstream::in параметр открытия файла на чтение
+    // | - побитовое или
+    // fstream::out - параметр открытия файла на запись
+    // fstream::app - для добавляния в файл 
+    fs.open(path, fstream::in | fstream::out | fstream::app); // чтение и запись
+
+    if (!fs.is_open())
+        cout << "error open file" << endl;
+    else
+    {
+        cout << "file open" << endl;
+        
+        int value;
+        string msg;
+
+        cout << "enter 1 write file" << endl;
+        cout << "enter 2 read file" << endl;
+        cin>>value;
+
+        if (value==1)
+        {
+            cout<<"enter msg: ";
+            cin>>msg;
+            fs<<msg<<"\n";
+
+        }
+        if (value==2)
+        {
+            cout<<"read file"<<endl;
+            
+
+            // чтение из файла не работает
+            // while (!fs.eof())
+            // {
+            //     msg = "";
+            //     fs>>msg;
+            //     cout<<msg<<endl;
+            // }
+
+            // while (getline(fs, msg))
+            // {
+            //     cout<<msg<<endl;
+            // }
+
+            // char ch;
+            // while (fs.get(ch))
+            // {
+            //     cout<<ch<<endl;
+            // }
+            
+        }
+        
+        
+    }
+
+    fs.close();
+}
+
+
 
 class Point
 {
