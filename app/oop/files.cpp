@@ -73,6 +73,7 @@ void fstream_file()
 
             так же имеется ошибка с испоьзованием библиотек
             library not found for -lcrt0.o
+            на других unix таких траблов нет
 
             */
         }
