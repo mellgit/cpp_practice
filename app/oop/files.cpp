@@ -7,6 +7,7 @@ void of_file();
 void if_file();
 void write_obj_to_file();
 void fstream_file();
+void stream_io();
 
 int main()
 {
@@ -17,10 +18,98 @@ int main()
     // of_file();
     // if_file();
     // write_obj_to_file();
-    fstream_file();
+    // fstream_file();
+    stream_io();
 
     return 0;
 }
+
+
+class PointNew
+{
+// private:
+//     int x;
+//     int y;
+//     int z;
+
+public:
+
+    int x;
+    int y;
+    int z;
+
+    PointNew()
+    {
+        x=y=z=0;
+    }
+    PointNew(int x, int y, int z)
+    {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    
+    
+};
+
+
+ostream& operator<<(ostream& os, const PointNew& point)
+{
+    /*
+    перезгрузка оператора <<
+    перегружать необходимо вне класса, тк ostream не пренадлежит нашему классу PointNew
+    данная перегрузка позволяет выводить объект класса как в файл, так и в консоль
+    */
+
+    os << point.x<<" "<<point.y<<" "<<point.z<<endl;
+    return os;
+}
+
+// istream& operator>>(istream& is, const PointNew& point)
+// {
+//     /*
+//     перезгрузка оператора >>
+    
+//     */
+
+//     is >> point.x >>point.y>>point.z;
+//     return is;
+
+// }
+
+void stream_io()
+{
+    string path = "data/io_file.txt";
+    fstream fs;
+
+    PointNew point_new(1,343,62);
+
+    // cout<<point_new;
+
+    fs.open(path, fstream::in | fstream::out | fstream::app); // чтение и запись
+
+    if (!fs.is_open())
+        cout << "error open file" << endl;
+    else
+    {
+        cout << "file open" << endl;
+        // fs<<point_new<<endl; // запись объекта в файл
+
+        /*
+        снова ошибка при чтение из файла
+        отсутствует оператор ">>", соответствующий этим операндамC/C++
+        error: invalid operands to binary expression ('std::istream' (aka 'basic_istream<char>') and 'const int')
+        */
+        // PointNew p;
+        // fs>>p;
+
+        
+    }
+
+}
+
+
 
 
 
