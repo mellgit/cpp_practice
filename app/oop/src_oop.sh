@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 files.cpp -o files # 17++
-./files
-rm files
+g++ -std=c++17 try_catch.cpp -o try_catch # 17++
+./try_catch
+rm try_catch
 
