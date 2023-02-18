@@ -100,6 +100,7 @@ void stream_io()
         снова ошибка при чтение из файла
         отсутствует оператор ">>", соответствующий этим операндамC/C++
         error: invalid operands to binary expression ('std::istream' (aka 'basic_istream<char>') and 'const int')
+        возможно дело в архитектуре процессора, тк не хватает определенных библиотек        
         */
         // PointNew p;
         // fs>>p;
