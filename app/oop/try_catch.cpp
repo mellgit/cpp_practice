@@ -4,11 +4,53 @@
 using namespace std;
 
 void try_catch_function();
+void throw_function();
+
 
 int main()
 {
-    try_catch_function();
+    // try_catch_function();
+    throw_function();
+    return 0; 
 }
+
+void foo(int value)
+{
+    if (value<0)
+    {
+        // throw "value < 0";
+
+        // вместе exception необходимо использовать runtime_error
+        throw runtime_error("value < 0");
+    }
+
+    cout<<"value = "<<value<<endl;
+}
+
+void throw_function()
+{
+
+    try
+    {
+        foo(55);
+        foo(-55); // exception 
+        
+    }
+    // catch(const char *exp) // исключение на строчку
+    catch (const exception &exp)
+    {
+        /*
+        что в throw бросают, то и ловит catch
+        */
+       cout<<exp.what()<<endl; 
+
+        // исключение на строчку
+        // cout << "throw " << exp << '\n';
+    }
+    
+
+}
+
 
 void try_catch_function()
 {
