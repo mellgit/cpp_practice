@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 try_catch.cpp -o try_catch # 17++
-./try_catch
-rm try_catch
+g++ -std=c++17 enum_type.cpp -o enum_type # 17++
+./enum_type
+rm enum_type
 
