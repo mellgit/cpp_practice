@@ -5,14 +5,70 @@ using namespace std;
 
 void try_catch_function();
 void throw_function();
-
+void more_try();
 
 int main()
 {
     // try_catch_function();
-    throw_function();
+    // throw_function();
+    more_try();
     return 0; 
 }
+
+void foo_new(int value)
+{
+    // несколько исключений
+    if (value < 0)
+    {
+        throw "value < 0";
+    }
+    if (value==0)
+    {
+        throw runtime_error("value == 0");
+    }
+    if (value==1)
+    {
+        throw 1;
+    }
+    
+    cout << "value = " << value << endl;
+}
+
+void more_try()
+{
+    try
+    {
+        foo_new(55);
+        // foo_new (-55); // exception
+        // foo_new(0);  // exception
+        foo_new(1); // exception
+    }
+    /*
+    отработка нескольких блоков catch, тк ошибка мб разной
+    данным способом можно отловить как можно больше исключений
+    */
+    catch (const char *exp)
+    {
+        cout <<"first catch: "<<exp << endl;
+    }
+    catch (const exception &exp)
+    {
+        cout << "second catch: " << exp.what() << endl;
+    }
+    catch (...)
+    {
+        /*
+        таким способом можно отловить любое исключение
+        но без понимания того, что в нем
+        такое исключение должно быть в самом конце
+        тк оно перехватывает все исключения и на то(catch), что находится ниже ее
+        реагировать не будет и выпадет ошибка
+        */
+        cout<<"something wrong"<<endl;
+    }
+}
+
+
 
 void foo(int value)
 {
