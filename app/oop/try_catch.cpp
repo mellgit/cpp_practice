@@ -6,16 +6,72 @@ using namespace std;
 void try_catch_function();
 void throw_function();
 void more_try();
+void custom_exception_class();
 
 int main()
 {
     // try_catch_function();
     // throw_function();
-    more_try();
+    // more_try();
+    custom_exception_class();
     return 0; 
 }
 
-void foo_new(int value)
+class MyException : public exception
+{
+private:
+    int data_state;
+public:
+    MyException(char *msg, int data_state) 
+    {
+        this->data_state = data_state;
+    }
+    int get_data_state()
+    {
+        return data_state;
+    }
+};
+
+
+void foo_3(int value)
+{
+    if (value < 0)
+    {
+        throw runtime_error("value < 0");
+    }
+    if (value == 1)
+    {
+        throw MyException("value == 1", value);
+    }
+
+
+    cout << "value = " << value << endl;
+}
+
+
+void custom_exception_class()
+{
+    try
+    {
+        foo_3(55);
+        // foo_3(-55); // exception
+        foo_3(1); // exception
+    }
+    catch (MyException &exp)
+    {
+        /*
+        всегда сначала отлавливают конкретные исключения (MyException)
+        а уже потом общие (exception)
+        */
+        cout << "throw: " << exp.what() << endl; 
+        cout<<"state: "<<exp.get_data_state()<<endl;
+        
+    }
+}
+
+
+
+void foo_2(int value)
 {
     // несколько исключений
     if (value < 0)
@@ -38,10 +94,10 @@ void more_try()
 {
     try
     {
-        foo_new(55);
-        // foo_new (-55); // exception
-        // foo_new(0);  // exception
-        foo_new(1); // exception
+        foo_2(55);
+        // foo_2 (-55); // exception
+        // foo_2(0);  // exception
+        foo_2(1); // exception
     }
     /*
     отработка нескольких блоков catch, тк ошибка мб разной
