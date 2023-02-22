@@ -1,18 +1,41 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std; // для неявного использования, лучше не использовать 
 
 
 void enum_function();
-
+void name_space_cpp();
 
 int main()
 {
-    enum_function();
+    // enum_function();
+    name_space_cpp();
     return 0;
 }
 
+namespace first_ns
+{
+    void func()
+    {
+        cout<<"first NS"<<endl;
+    }
+}
+namespace second_ns
+{
+    void func()
+    {
+        cout << "second NS" << endl;
+    }
+}
 
+void name_space_cpp()
+{
+    /*
+    std - пространство именн с++
+    */
+    first_ns::func();
+    second_ns::func();
+}
 
 class PC
 {
@@ -26,7 +49,7 @@ public:
         SLEEP,
         TIMER = 30 // значения можно устанавливать по необходимости
     };
-
+ 
     PCState get_state(){return state;}
     void set_state(PCState state)
     {
