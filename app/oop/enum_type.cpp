@@ -5,13 +5,56 @@ using namespace std; // для неявного использования, лу
 
 void enum_function();
 void name_space_cpp();
+void template_class();
 
 int main()
 {
     // enum_function();
-    name_space_cpp();
+    // name_space_cpp();
+    template_class();
     return 0;
 }
+
+template <typename T> // шаблонный тип данных T
+// template<typename T1, typename T2> // чтобы типов данных было несколько
+class MyClass
+{
+
+public:
+/*
+в шаблонном классе можно создавать шаблонные типы фу-й
+
+*/
+    MyClass(T value)
+    {
+        this->value = value;
+    }
+    void data_type_size()
+    {
+        cout << "sizeof=" << sizeof(value) << endl;
+    }
+    T my_function() { return value; }
+
+private:
+    T value;
+};
+
+
+void template_class()
+{
+    int a = 5;
+
+    /*
+    так как тип данных не известен, необходимо указывать тип данных
+    для шаблонного класса, через скобки <>
+    в эти скобки так же можно передавать тип созданного нами класса
+    MyClass<NewMyClass> c(a);
+    */
+    MyClass<int> c(a);
+    c.data_type_size();
+    cout<<"value="<<c.my_function()<<endl;
+}
+
 
 namespace first_ns
 {
