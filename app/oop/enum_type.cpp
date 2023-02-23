@@ -6,14 +6,74 @@ using namespace std; // для неявного использования, лу
 void enum_function();
 void name_space_cpp();
 void template_class();
+void inheritance_template_class();
 
 int main()
 {
     // enum_function();
     // name_space_cpp();
-    template_class();
+    // template_class();
+    inheritance_template_class();
     return 0;
 }
+
+template <class T> 
+class TypeSize
+{
+
+public:
+    TypeSize()
+    {
+        value=0;
+    }
+    TypeSize(T value)
+    {
+        this->value = value;
+    }
+    void data_type_size()
+    {
+        cout << "sizeof=" << sizeof(value) << endl;
+    }
+    T my_function() { return value; }
+
+private:
+    T value;
+};
+
+/*
+class TypeInfo : public TypeSize<int> - либо привязать наследника к конкретному типу данных
+
+template <typename T1>
+class TypeInfo : public TypeSize<T1> - либо дать доступ на все типы, в 
+таком случае наследуемый класс также должен быть шаблонным
+
+*/
+template <class T1>
+class TypeInfo : public TypeSize<T1>
+{
+public:
+    // error: member initializer 'TypeSize' does not name a non-static data member or base class
+    TypeInfo(T1 value):TypeSize(value)
+    {
+
+    }
+private:
+};
+
+void inheritance_template_class()
+{
+    int a = 5;
+    double x = 2.5;
+
+    TypeSize<int> c(a);
+    c.data_type_size();
+    cout << "value=" << c.my_function() << endl;
+
+    TypeInfo<double> b(x);
+    b.data_type_size();
+    cout << "value=" << b.my_function() << endl;
+}
+
 
 template <typename T> // шаблонный тип данных T
 // template<typename T1, typename T2> // чтобы типов данных было несколько
