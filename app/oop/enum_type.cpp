@@ -8,15 +8,54 @@ void enum_function();
 void name_space_cpp();
 void template_class();
 void inheritance_template_class();
+void class_template_specialization();
 
 int main()
 {
     // enum_function();
     // name_space_cpp();
     // template_class();
-    inheritance_template_class();
+    // inheritance_template_class();
+    class_template_specialization();
     return 0;
 }
+
+template<typename NewTemp>
+class Printer
+{
+public:
+    void print(NewTemp value)
+    {
+        cout<<value<<endl;
+        // cout<<typeid(value).name()<<endl;
+    }
+};
+
+template<>
+class Printer<string>
+{
+    /*
+    данный шаблонный класс создан конкретно под строки
+    для этого ипользуется - template<>
+    больше похоже на перегрузку
+    */
+public:
+    void print(string value)
+    {
+        cout << "___" << value << "___" << endl;
+    }
+};
+void class_template_specialization()
+{
+
+    // Printer<int> p;
+    // p.print(234); // отработает базовый класс
+    Printer<string> p;
+    p.print("hello"); // ___hello___ - отработает наследник
+}
+
+
+
 
 template <class Temp> 
 class TypeSize
@@ -51,10 +90,10 @@ class TypeInfo : public TypeSize<Temp>
 {
 public:
     // error: member initializer 'TypeSize' does not name a non-static data member or base class
-    TypeInfo(Temp value):TypeSize(value)
-    {
+    // TypeInfo(Temp value):TypeSize(value)
+    // {
 
-    }
+    // }
 
     // void show_type_name()
     // {
@@ -72,10 +111,10 @@ void inheritance_template_class()
     // c.data_type_size();
     // cout << "value=" << c.my_function() << endl;
 
-    TypeInfo<double> b(x);
-    b.data_type_size();
-    b.show_type_name();
-    cout << "value=" << b.my_function() << endl;
+    // TypeInfo<double> b(x);
+    // b.data_type_size();
+    // b.show_type_name();
+    // cout << "value=" << b.my_function() << endl;
 }
 
 
