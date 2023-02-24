@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <typeinfo>
 using namespace std; // для неявного использования, лучше не использовать 
 
 
@@ -17,16 +18,13 @@ int main()
     return 0;
 }
 
-template <class T> 
+template <class Temp> 
 class TypeSize
 {
 
 public:
-    TypeSize()
-    {
-        value=0;
-    }
-    TypeSize(T value)
+    
+    TypeSize(Temp value)
     {
         this->value = value;
     }
@@ -34,10 +32,10 @@ public:
     {
         cout << "sizeof=" << sizeof(value) << endl;
     }
-    T my_function() { return value; }
+    Temp my_function() { return value; }
 
-private:
-    T value;
+protected:
+    Temp value;
 };
 
 /*
@@ -48,15 +46,20 @@ class TypeInfo : public TypeSize<T1> - либо дать доступ на вс�
 таком случае наследуемый класс также должен быть шаблонным
 
 */
-template <class T1>
-class TypeInfo : public TypeSize<T1>
+template <class Temp>
+class TypeInfo : public TypeSize<Temp>
 {
 public:
     // error: member initializer 'TypeSize' does not name a non-static data member or base class
-    TypeInfo(T1 value):TypeSize(value)
+    TypeInfo(Temp value):TypeSize(value)
     {
 
     }
+
+    // void show_type_name()
+    // {
+    //     cout<<"type name: "<<typeid(value).name()<<endl;
+    // }
 private:
 };
 
@@ -65,14 +68,19 @@ void inheritance_template_class()
     int a = 5;
     double x = 2.5;
 
-    TypeSize<int> c(a);
-    c.data_type_size();
-    cout << "value=" << c.my_function() << endl;
+    // TypeSize<int> c(a);
+    // c.data_type_size();
+    // cout << "value=" << c.my_function() << endl;
 
     TypeInfo<double> b(x);
     b.data_type_size();
+    b.show_type_name();
     cout << "value=" << b.my_function() << endl;
 }
+
+
+
+
 
 
 template <typename T> // шаблонный тип данных T
