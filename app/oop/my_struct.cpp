@@ -7,14 +7,39 @@ using namespace std;
 void my_struct();
 void smart_pointers();
 void new_smart_pointer();
-
+void smart_dynamic_array();
 
 int main()
 {
     // my_struct();
     // smart_pointers();
-    new_smart_pointer();
+    // new_smart_pointer();
+    smart_dynamic_array();
     return 0;
+}
+
+void smart_dynamic_array()
+{
+
+    /*
+    работа с динамическим массивом через умные указатели shared_ptr
+    shared_ptr<int> - создание целого значения
+    shared_ptr<int[]> - создание динамического массива
+    */
+    int size;
+    cout<<"enter size: "; cin>>size;
+
+    // int *arr = new int[size]{1,6,33,44};
+    // shared_ptr<int[]> ptr(arr);
+
+    shared_ptr<int[]> ptr(new int[size]{});
+
+    for (int i = 0; i < size; i++)
+    {
+        ptr[i] = rand()%10;
+        cout<<ptr[i]<<" ";
+    }
+    cout << endl;
 }
 
 
