@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-
-
 RUN apt -y update && \
     apt -y upgrade && \ 
     apt install -yy gcc g++ gdb cmake && \
@@ -16,10 +14,6 @@ RUN apt install -y python3-pip
 WORKDIR /opt/app
 
 COPY . .
-
-# ENV TZ=Europe/Moscow
-
-# RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENTRYPOINT [ "python3" ]
 
