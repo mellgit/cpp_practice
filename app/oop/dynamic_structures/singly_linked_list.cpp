@@ -2,13 +2,9 @@
 #include <string>
 using namespace std;
 
-// template <typename T> class node;
-// template <typename T> void swap(node<T> & a, node<T> & b);
 
-// template <typename T> class List;
-// template <typename T> class Node;
-// template <typename T>;
 
+// error: declaration of 'T' shadows template parameter
 template <typename T>
 class List
 {
