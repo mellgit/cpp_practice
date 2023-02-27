@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  app:
+    image: app
+    container_name: app
+    restart: "always"
+    volumes:
+      - /Users/mell/github/cpp_practice:/opt/app
+
+    # networks:
+    #   - sop-net
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
