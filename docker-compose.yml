@@ -8,7 +8,6 @@ services:
     restart: "always"
     volumes:
       - /cpp_practice:/opt/app
-
     logging:
       driver: "json-file"
       options:
