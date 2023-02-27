@@ -7,7 +7,7 @@ using namespace std;
 
 // template <typename T> class List;
 // template <typename T> class Node;
-template <typename T>;
+// template <typename T>;
 
 template <typename T>
 class List
