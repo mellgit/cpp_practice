@@ -25,7 +25,7 @@ class List
 {
 
 public:
-    List(/* args */);
+    List();
     ~List();
 
     void push_back(T data); // добавление данных в конец списка
@@ -58,6 +58,10 @@ List<T>::~List()
 template <typename T>
 void List<T>::push_back(T data)
 {
+    /*
+    добавление в конец списка 
+    */
+
     // если данных нет
     if (head == nullptr)
     {
@@ -114,9 +118,6 @@ int main()
     cout<<"========================= BEGIN ========================="<<endl;
 
     List<int> lst;
-    // lst.push_back(5);
-    // lst.push_back(15);
-    // lst.push_back(25);
 
     int value_for_size;
     cout<<"enter list size: "; cin>>value_for_size;

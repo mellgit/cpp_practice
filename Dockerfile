@@ -26,5 +26,5 @@ ENTRYPOINT [ "python3" ]
 CMD [ "-m", "http.server", "21222" ]
 
 # docker build -t app .
-# docker run -d --name warpa --network=odh-net -v /opt/gitlab/warpa-service/warpa/app:/opt/warpa/app -p 35002:35001 --restart always warpa
+
 
