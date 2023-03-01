@@ -28,6 +28,8 @@ public:
     List();
     ~List();
 
+    void pop_front();
+    void clear();
     void push_back(T data); // добавление данных в конец списка
     int get_size(){return size;}
 
@@ -53,6 +55,32 @@ List<T>::List(/* args */)
 template <typename T>
 List<T>::~List()
 {
+    clear(); // очистка списка
+}
+
+template <typename T>
+void List<T>::pop_front()
+{
+    /*
+    удаление первого элемента списка
+    */
+    Node<T> *temp = head; // первый элемент положили во пременную переменную 
+    head = head->pNext; // переход на следующий элемент
+    delete temp;
+
+    size--; // размер списка уменьшается
+
+}
+
+template <typename T>
+void List<T>::clear()
+{
+    // очистка списка
+    while (size) // size==0 - false, все остальное true
+    {
+        pop_front();
+    }
+    
 }
 
 template <typename T>
@@ -132,6 +160,17 @@ int main()
         cout<<"elem: "<<lst[i]<<endl;
     }
     
+    lst.pop_front();
+    cout<<"call pop_front method"<<endl;
+
+    for (int i = 0; i < lst.get_size(); i++)
+    {
+        cout << "elem: " << lst[i] << endl;
+    }
+
+    lst.clear();
+    cout << "call clear method" << endl;
+    cout<<"len list == "<<lst.get_size()<<endl;
 
     return 0;
 } 
