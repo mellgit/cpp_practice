@@ -31,6 +31,7 @@ public:
     void pop_front();
     void clear();
     void push_back(T data); // добавление данных в конец списка
+    void push_front(T data); // добавление данных в начало списка
     int get_size(){return size;}
 
     T& operator[](const int index);
@@ -115,6 +116,18 @@ void List<T>::push_back(T data)
 }
 
 template <typename T>
+void List<T>::push_front(T data)
+{
+
+    /* 
+    выделение памяти для добавления в начало списка
+    в нее кладем данные и ссылку на адрес с текущего первого элемента
+    */
+    head = new Node<T>(data, head); 
+    size++;
+}
+
+template <typename T>
 T &List<T>::operator[](const int index)
 {
     /*
@@ -172,5 +185,12 @@ int main()
     cout << "call clear method" << endl;
     cout<<"len list == "<<lst.get_size()<<endl;
 
+    cout << "call push_front method" << endl;
+    lst.push_front(4);
+    lst.push_front(47);
+    for (int i = 0; i < lst.get_size(); i++)
+    {
+        cout << "elem: " << lst[i] << endl;
+    }
     return 0;
 } 
