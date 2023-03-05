@@ -31,6 +31,7 @@ public:
     void pop_front();
     void clear();
     void insert(T data, int index);
+    void remove_at(int index);
     void push_back(T data); // добавление данных в конец списка
     void push_front(T data); // добавление данных в начало списка
     int get_size(){return size;}
@@ -109,6 +110,30 @@ void List<T>::insert(T data, int index)
     }
     
     
+}
+
+template <typename T>
+void List<T>::remove_at(int index)
+{
+    if (index == 0)
+    {
+        pop_front();
+    }
+    else
+    {
+        Node<T> *previous = this->head;
+
+        for (int i = 0; i < index - 1; i++)
+        {
+            previous = previous->pNext; // найти предыдущий элемент для вставки
+        }
+
+        Node<T> *toDelete = previous->pNext;
+        previous->pNext = toDelete->pNext;
+        delete toDelete;
+
+        size--;
+    }
 }
 
 template <typename T>
@@ -225,7 +250,16 @@ int main()
 
     cout << "call insert method" << endl;
 
-    lst.insert(99, 1);
+    lst.insert(99, 2);
+
+    for (int i = 0; i < lst.get_size(); i++)
+    {
+        cout << "elem: " << lst[i] << endl;
+    }
+
+    cout << "call remove_at method" << endl;
+
+    lst.remove_at(1);
 
     for (int i = 0; i < lst.get_size(); i++)
     {
