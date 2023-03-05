@@ -23,21 +23,20 @@ public:
 template <typename T>
 class List
 {
-
 public:
     List();
     ~List();
 
-    void pop_front();
-    void pop_back();
-    void clear();
-    void insert(T data, int index);
-    void remove_at(int index);
+    void pop_front(); // удаление первого элемента списка
+    void pop_back();  // удаление последнего элемента списка
+    void clear();     // чистка списка
+    void insert(T data, int index); // вставка элемента в список
+    void remove_at(int index);      // удаление по индексу 
     void push_back(T data); // добавление данных в конец списка
     void push_front(T data); // добавление данных в начало списка
     int get_size(){return size;}
 
-    T& operator[](const int index);
+    T &operator[](const int index); // перегрузка для индекса
 
 private:
     /*
@@ -48,6 +47,7 @@ private:
     int size; // количество элементов списка
     Node<T> *head; // первый элемент списка
 };
+
 
 template <typename T>
 List<T>::List(/* args */)
@@ -73,8 +73,8 @@ void List<T>::pop_front()
     delete temp;
 
     size--; // размер списка уменьшается
-
 }
+
 
 template <typename T>
 void List<T>::pop_back()
@@ -83,6 +83,7 @@ void List<T>::pop_back()
     remove_at(size-1);
 }
 
+
 template <typename T>
 void List<T>::clear()
 {
@@ -90,16 +91,16 @@ void List<T>::clear()
     while (size) // size==0 - false, все остальное true
     {
         pop_front();
-    }
-    
+    }    
 }
+
 
 template <typename T>
 void List<T>::insert(T data, int index)
 {
-
     if (index==0)
     {
+        // если индекс 0, просто добавляем элемент в начало списка
         push_front(data);
     }
     else
@@ -111,14 +112,14 @@ void List<T>::insert(T data, int index)
             previous = previous->pNext; // найти предыдущий элемент для вставки 
         }
 
+        // новая нода для добавления
         Node<T> *newNode = new Node<T>(data, previous->pNext);
         previous->pNext = newNode;
 
         size++;
-    }
-    
-    
+    }   
 }
+
 
 template <typename T>
 void List<T>::remove_at(int index)
@@ -143,6 +144,7 @@ void List<T>::remove_at(int index)
         size--;
     }
 }
+
 
 template <typename T>
 void List<T>::push_back(T data)
@@ -169,16 +171,14 @@ void List<T>::push_back(T data)
             current = current->pNext;
         }
         current->pNext = new Node<T>(data); // добавить в конец списка
-
     }
-
     size++;
 }
+
 
 template <typename T>
 void List<T>::push_front(T data)
 {
-
     /* 
     выделение памяти для добавления в начало списка
     в нее кладем данные и ссылку на адрес с текущего первого элемента
@@ -186,6 +186,7 @@ void List<T>::push_front(T data)
     head = new Node<T>(data, head); 
     size++;
 }
+
 
 template <typename T>
 T &List<T>::operator[](const int index)
@@ -209,6 +210,7 @@ T &List<T>::operator[](const int index)
         counter++;
     }
 }
+
 
 int main()
 {
