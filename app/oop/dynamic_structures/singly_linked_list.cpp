@@ -29,6 +29,7 @@ public:
     ~List();
 
     void pop_front();
+    void pop_back();
     void clear();
     void insert(T data, int index);
     void remove_at(int index);
@@ -73,6 +74,13 @@ void List<T>::pop_front()
 
     size--; // размер списка уменьшается
 
+}
+
+template <typename T>
+void List<T>::pop_back()
+{
+    // удаление последнего элемента списка
+    remove_at(size-1);
 }
 
 template <typename T>
@@ -260,6 +268,15 @@ int main()
     cout << "call remove_at method" << endl;
 
     lst.remove_at(1);
+
+    for (int i = 0; i < lst.get_size(); i++)
+    {
+        cout << "elem: " << lst[i] << endl;
+    }
+
+    cout << "call pop_back method" << endl;
+
+    lst.pop_back();
 
     for (int i = 0; i < lst.get_size(); i++)
     {
