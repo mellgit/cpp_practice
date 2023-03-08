@@ -2,11 +2,13 @@
 #include <vector>
 using namespace std;
 
-void vec_fun()
+void vector_function()
 {
-    // vector<int> my_vector = {23,43,65,87}; // так тоже можно инициализировать вектор
-    // vector<int> my_vector(20); // инициализированный вектор из 20 нулей
-    // vector<int> my_vector(10, 5); // инициализированный вектор из 10 пятерок
+    /*
+    vector<int> my_vector = {23,43,65,87}; // так тоже можно инициализировать вектор
+    vector<int> my_vector(20); // инициализированный вектор из 20 нулей
+    vector<int> my_vector(10, 5); // инициализированный вектор из 10 пятерок
+    */
     vector<int> my_vector;
     my_vector.push_back(4);
     my_vector.push_back(43);
@@ -43,12 +45,9 @@ void vec_fun()
 
     my_vector.empty(); // проверка не пустой ли вектор: true - путсой false - заполнен
     cout << "call empty(): " << my_vector.empty() << endl;
-
-    
 }
 
-
-void iter_vec()
+void iterator_function()
 {
     vector<int> my_vector = {34,65,2,4,45};
 
@@ -71,10 +70,10 @@ void iter_vec()
     cout<<"cycle for"<<endl;
     for (vector<int>::iterator i  = my_vector.begin(); i!=my_vector.end(); i++)
     {
-        // реализация с константными итераторами
-        // for (vector<int>::const_iterator i  = my_vector.cbegin(); i!=my_vector.cend(); i++)
-
         /*
+        реализация с константными итераторами
+        for (vector<int>::const_iterator i  = my_vector.cbegin(); i!=my_vector.cend(); i++)
+        
         my_vector.end() - указывает на пустоту, после последнего эле-та вектора
 
         vector<int>::iterator i  = my_vector.begin() - с чего начать
@@ -130,7 +129,7 @@ void iter_vec()
 
 int main()
 {
-    // vec_fun();
-    iter_vec();
+    // vector_function();
+    iterator_function();
     return 0;
 }
