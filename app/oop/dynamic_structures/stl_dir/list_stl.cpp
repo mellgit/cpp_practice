@@ -11,7 +11,14 @@ void print_list(const list<T> &lst)
     {
         cout<<*i<<endl;
     }
-    
+
+    /*
+    1 - for (auto i = lst.cbegin(); i != lst.cend(); ++i) // префикс
+    2 - for (auto i = lst.cbegin(); i != lst.cend(); i++) // постфикс
+    разница в скорости
+    тк 2 создает промежуточный объект(не используя элеметн листа) и возвращает его
+    а 1 увеличивает текущий объект листа 
+    */
 }
 
 void list_funtction()
