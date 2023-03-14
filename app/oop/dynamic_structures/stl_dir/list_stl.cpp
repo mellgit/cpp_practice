@@ -78,6 +78,42 @@ void list_funtction()
 }
 
 
+void foreach()
+{
+    int arr[] = {23,4,56,3};
+
+    // синтаксис только для MVS
+    // for each(auto var in arr)
+    // {
+    //     cout<<var<<endl;
+    // }
+
+    // стандарт cpp
+    /*
+    for (auto elem : arr)
+    elem копируется по значению из массива -> массив не изменяется
+
+    for (auto &elem : arr)
+    elem копируется по ссылки из массива -> массив изменяется
+
+    for (const auto &elem : arr)
+    elem константа, копируется по ссылки из массива -> массив только для чтения
+
+    */
+    for (auto elem : arr)
+    {
+        cout<<elem<<endl;
+    }
+    
+    list<int> my_list = {34,54,675,9,43};
+
+    for (const auto &elem : my_list)
+    {
+        cout<<elem<<endl;
+    }
+
+}
+
 int main()
 {
     /*
@@ -94,6 +130,10 @@ int main()
     vaector<int>::iterator it = my_vector.begin();
 
     */
-    list_funtction();
+    // list_funtction();
+
+
+
+    foreach_range_based();
     return 0;
 }
