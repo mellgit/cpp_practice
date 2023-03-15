@@ -1,7 +1,29 @@
 #include <iostream>
 #include <vector>
 #include <forward_list>
+#include <array>
 using namespace std;
+
+
+void array_fun()
+{
+    /*
+    vector - обертка динамического массива
+    array - обертка статического массива, изменить, вставить, удалить нельзя
+    */
+
+    // <тип массива, количество элементов>
+    array<int, 5> arr = {32,453,7,34,444};
+
+    // cout<<arr[5]<<endl; // без провероки, тк 5 индекса нет
+    // cout << arr.at(5) << endl; // с првоеркой, выпадет ошибка
+
+    for (auto elem : arr)
+    {
+        cout<<elem<<endl;
+    }
+    
+}
 
 
 void forward_list_fun()
@@ -28,6 +50,7 @@ void forward_list_fun()
 
 int main()
 {
-    forward_list_fun();
+    // forward_list_fun();
+    array_fun();
     return 0;
 }
