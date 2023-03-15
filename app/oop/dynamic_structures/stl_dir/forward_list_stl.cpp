@@ -5,6 +5,21 @@
 using namespace std;
 
 
+void array_operator()
+{
+    array<int, 5> arr1 = {32, 453, 7, 34, 444};
+    array<int, 5> arr2 = {32, 453, 7, 34, 444};
+
+    // сравнивать можно только однотипные контейнеры
+    bool result = (arr1 == arr2);
+    bool result2 = (arr1 != arr2);
+    bool result3 = (arr1 > arr2);
+
+    cout << result << endl;
+    cout << result2 << endl;
+    cout << result3 << endl;
+}
+
 void array_fun()
 {
     /*
@@ -51,6 +66,7 @@ void forward_list_fun()
 int main()
 {
     // forward_list_fun();
-    array_fun();
+    // array_fun();
+    array_operator();
     return 0;
 }
