@@ -2,8 +2,19 @@
 #include <vector>
 #include <forward_list>
 #include <array>
+#include <deque> 
 using namespace std;
 
+
+void deque_fun()
+{
+    /*
+    двустороння очередь
+    методы схожы с листом, разница только в скорости выполнения
+    */
+    deque<int> dq = {23,34,65,7};
+
+}
 
 void array_operator()
 {
