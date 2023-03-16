@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ -std=c++17 forward_list_stl.cpp -o forward_list_stl # 17++
-./forward_list_stl
-rm forward_list_stl
+g++ -std=c++17 set_stl.cpp -o set_stl # 17++
+./set_stl
+rm set_stl
 
