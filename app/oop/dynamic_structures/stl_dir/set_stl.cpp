@@ -1,7 +1,39 @@
 #include <iostream>
 #include <set> // бинарное дерево
+#include <vector>
 using namespace std;
 
+typedef vector<int> int_vector; // alias 
+
+
+void typedef_fun()
+{
+    /*
+    typedef - присвоить типу данных псевдоним (alias)
+
+    чаще всего не используют using namespace std и запись вектора будет выглядет следующем образом
+    std::vector<int> my_vector;
+    
+    при помощи псевдонима, можно сократить название
+    int_vector my_vector;
+
+    */
+
+    // записи равны между собой, не стал убирать std
+    vector<int> my_vector = {23, 34, 54, 5};
+    int_vector my_vector2 = {23, 34, 54, 5};
+
+    cout << "default" << endl;
+    for (auto elem : my_vector)
+    {
+        cout << elem << endl;
+    }
+    cout << "typedef" << endl;
+    for (auto elem : my_vector2)
+    {
+        cout << elem << endl;
+    }
+}
 
 void set_fun()
 {
@@ -40,6 +72,7 @@ void set_fun()
 
 int main()
 {
-    set_fun();
+    // set_fun();
+    typedef_fun();
     return 0;
 }
