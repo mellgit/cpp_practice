@@ -1,10 +1,60 @@
 #include <iostream>
 #include <set> // бинарное дерево
+#include <map> // бинарное дерево схоже с set
+#include <string>
 #include <vector>
 using namespace std;
 
 typedef vector<int> int_vector; // alias 
 
+void map_fun()
+{
+    /*
+    map and multimap - хранят пары значений (key, value - словарь(dict))
+    multimap может хранить повторяющиеся элементы
+
+    pair - пара, типы могу быть как одинаковыми, так и разными
+    pair<type1, type2> p(value_type1, value_type2);
+
+    map - словарь, типы могу быть как одинаковыми, так и разными
+    map<type1, type2> my_map;
+
+    */
+
+    cout << "=== pair === " << endl;
+    pair<int, string> p(1, "phone");
+    cout << "p.first - " << p.first << endl;
+    cout << "p.second - " << p.second << endl;
+
+    cout << "=== map === " << endl;
+    map<int, string> my_map;
+
+    // emplace == make_pair == pair<type1, type2>
+    // my_map.insert(make_pair(1, "phone"));
+
+    my_map.emplace(1, "phone");
+
+    auto it = my_map.find(1); // return {1, 'phone'} else my_map.end()
+
+    cout << it->first << " - " << it->second << endl;
+
+    map<string, int> new_map;
+    new_map.emplace("bob", 2323);
+    new_map["alice"] = 7774; // так можно добавлять в map
+    cout << new_map["bob"] << endl; // перегрузка оператора []
+    cout << new_map["alice"] << endl;
+
+    new_map.erase("bob"); // удаление по ключу
+
+    new_map["mari"] = 74;
+    new_map["joe"] = 123;
+
+    cout << endl <<"print map" << endl;
+    for (auto elem : new_map)
+    {
+        cout << elem.first << "-" << elem.second << endl;
+    }
+}
 
 void typedef_fun()
 {
@@ -73,6 +123,7 @@ void set_fun()
 int main()
 {
     // set_fun();
-    typedef_fun();
+    // typedef_fun();
+    map_fun();
     return 0;
 }
