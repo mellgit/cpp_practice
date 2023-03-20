@@ -1,7 +1,59 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include <stack>
+#include <queue>
+#include <deque>
 using namespace std;
+
+
+void queue_fun()
+{
+    /*
+    очередь и очередь с приоритетом - адаптеры контейнеров (тип обвяз)
+
+
+    !не работает
+    queue<int, list<int> q; - только с листом
+    auto a = q._Get_conteiner();
+
+    priority_queue<int, vector<int>> pq; - только с вектором
+    */
+
+    queue<int> q;
+    q.push(2); // or emplace()
+    q.push(4);
+    q.push(25);
+    
+    // cout << q.front() << endl; // первый элемент
+    // cout << q.back() << endl; // последний элемент
+    // q.pop(); // удаляет первый элемент в очереди
+
+    cout << " queue" << endl;
+    cout << "len=" << q.size() << endl;
+    // посмотреть все элементы в очереди
+    cout<<"print full queue"<<endl;
+    while (!q.empty())
+    {
+        cout << q.front() << endl; 
+        q.pop();                   
+    }
+
+    cout << " priority_queue" << endl;
+
+    priority_queue<int> pq; // элементы сортируются от большего с меньшему СРАЗУ
+    pq.push(34);
+    pq.push(342);
+    pq.push(4);
+
+    cout << "len=" << pq.size() << endl;
+    cout << "print full priority_queue" << endl;
+    while (!pq.empty())
+    {
+        cout << pq.top() << endl;
+        pq.pop();
+    }
+}
 
 
 void stack_fun()
@@ -56,6 +108,7 @@ void stack_fun()
 
 int main()
 {
-    stack_fun();
+    // stack_fun();
+    queue_fun();
     return 0;
 }
