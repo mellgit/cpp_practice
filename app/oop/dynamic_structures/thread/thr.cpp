@@ -3,6 +3,31 @@
 #include <chrono> // время
 using namespace std;
 
+void sec_do_work(int a, int b)
+{
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "==== sec_do_work start ====" << endl;
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "___________________" << endl;
+    cout << "a+b=" << a + b << " thr_id="<< this_thread::get_id() << endl;
+    cout << "___________________" << endl;
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "==== sec_do_work end ====" << endl;
+}
+
+void param_thr()
+{
+    thread th(sec_do_work, 3, 4); // в поток, параметры передаются последовательно
+
+    // for (size_t i = 0; true; i++) // бесконечный цикл
+    for (size_t i = 0; i < 10; i++) 
+    {
+        this_thread::sleep_for(chrono::milliseconds(500)); 
+        cout << this_thread::get_id() << " - thr_fun " << i << endl; // номер потока
+    }
+    th.join();
+}
+
 
 void do_work()
 {
@@ -55,6 +80,8 @@ void thr_fun()
 
 int main()
 {
-    thr_fun();
+    // thr_fun();
+    param_thr();
+
     return 0;
 }
