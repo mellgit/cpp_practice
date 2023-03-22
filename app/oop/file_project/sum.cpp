@@ -1,6 +1,6 @@
-#include "sum.h" // кавыяки - поиск по проекту
+#include "sum.h"
 
 int sum_fun(int a, int b)
 {
-    return a+b;
+    return 0;
 }

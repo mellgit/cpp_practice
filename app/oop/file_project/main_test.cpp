@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int result = sum_fun(2,4);
+    int result = sum_fun(3,4);
     cout<<result<<endl;
     return 0;
 }
