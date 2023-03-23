@@ -1,2 +1,2 @@
 #pragma once
-int sum_fun(int a, int b);
+int sum_fun(int, int);

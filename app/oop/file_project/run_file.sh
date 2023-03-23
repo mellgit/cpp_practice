@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 main_test.cpp -o main_test # 17++
-./main_test
-rm main_test
+clang++ -std=c++17 sum.cpp main.cpp -o main # 17++
+./main
+rm main
 
