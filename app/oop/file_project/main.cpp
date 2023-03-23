@@ -29,6 +29,6 @@ int main()
     cout<<"=========== begin ==========="<<endl;
     // test_sum_fun();
     test_my_class();
-    cout<<__cplusplus<<endl;
+    
     return 0;
 }
