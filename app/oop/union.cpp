@@ -1,6 +1,33 @@
 #include <iostream>
 #include <string>
+#include <functional>
 using namespace std;
+
+void foo()
+{
+    cout<<"call function foo()"<<endl;
+}
+
+int sum(int a, int b)
+{
+    return a+b;
+}
+
+void std_function()
+{
+    /*
+    class std::function - обертка для ф-й (указатель на ф-ю), используется для полиморфизма и лямбда ф-й, те шаблон для ф-й
+    для ее работы необходимо, чтобы совпадала сигнатура фу-и
+    */
+    function<void()> f; // объект function
+    f = foo; // присвоение объекту значения
+    f(); // вызов содержимого объекта, после назначения
+
+    function<int(int, int)> f_sum;
+    f_sum = sum;
+    cout<<f_sum(3,5)<<endl;
+
+}
 
 union MyUnion
 {
@@ -32,6 +59,7 @@ void union_fun()
 
 int main()
 {
-    union_fun();
+    // union_fun();
+    std_function();
     return 0;
 }
