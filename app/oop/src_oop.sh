@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 my_struct.cpp -o my_struct # 17++
-./my_struct
-rm my_struct
+clang++ -std=c++17 union.cpp -o union # 17++
+./union
+rm union
 
