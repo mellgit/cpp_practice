@@ -5,6 +5,51 @@
 using namespace std;
 
 
+class TestAnon
+{
+public:
+    int a = 3434;
+    void lampa()
+    {
+        auto f = [this]()
+        {
+            this->a;
+        };
+        f();
+    }
+};
+
+void more_anonym_function()
+{
+
+    int a = 3;
+    int b = 34;
+
+    auto f = [&a, b]()
+    {
+        
+        /*
+        параметры можно передавать как по ссылке, так и по значению
+        auto f = [=](){}; - передать все параметры по значению, которые лежат вне пространства анон ф-и
+        auto f = [=]()mutable{}; - передать все параметры по значению
+        auto f = [&](){}; - передать все параметры по ссылке
+        auto f = [this](){}; - передать весь класс
+        */
+        cout<<a<<" - "<<b<<endl;
+        a = 232;
+    };
+    f();
+    cout<<a<<endl;
+
+    // жестко указать тип возвращаемого типа ф-и (->)
+    auto f2 = [&a]()->int
+    {
+        return a;
+    };
+    cout<<"return a from f2: "<<f2()<<endl;
+
+}
+
 void test_dowork(vector<int> &vc, function<void(int)> func)
 {
     /*
@@ -117,6 +162,7 @@ int main()
 {
     // union_fun();
     // std_function();
-    anonym_function();
+    // anonym_function();
+    more_anonym_function();
     return 0;
 }
