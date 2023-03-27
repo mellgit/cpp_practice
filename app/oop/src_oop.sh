@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 union.cpp -o union # 17++
-./union
-rm union
+clang++ -std=c++17 functor.cpp -o functor # 17++
+./functor
+rm functor
 
