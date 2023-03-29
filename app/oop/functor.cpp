@@ -1,5 +1,26 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
+
+bool check_zero(int a)
+{
+    return a>0;
+}
+
+void bool_functor()
+{
+    /*
+    предикаты - это функторы, которые возвращают булевое значение
+    ипсользуются для проверки набора, вместо перебора циклом
+    число больше нуля, четное или нечетное, есть подстрока в строке или нет
+    */
+
+    vector<int> v = {23,45,76,-234,-555,121};
+    int result = count_if(v.begin(), v.end(), check_zero);
+    cout<<result<<endl;
+}
+
 
 class MyFunctor
 {
@@ -44,6 +65,7 @@ void functor_fun()
 
 int main()
 {
-    functor_fun();
+    // functor_fun();
+    bool_functor();
     return 0;
 }
