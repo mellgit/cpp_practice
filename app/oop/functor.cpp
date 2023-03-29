@@ -1,7 +1,27 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 using namespace std;
+
+class Person
+{
+public:
+    string name;
+    int score;
+
+    Person(string name, int score)
+    {
+        this->name = name;
+        this->score = score;
+    }
+
+    bool operator()(const Person &p)
+    {
+        return p.score >180;
+    }
+};
+
 
 bool check_zero(int a)
 {
@@ -19,6 +39,18 @@ void bool_functor()
     vector<int> v = {23,45,76,-234,-555,121};
     int result = count_if(v.begin(), v.end(), check_zero);
     cout<<result<<endl;
+
+
+    cout<<"person"<<endl;
+    vector<Person> person{
+        Person("bob", 232),
+        Person("bob2", 32),
+        Person("bob3", 22),
+        Person("bob4", 172),
+    };
+    // проверка, сколько персон имеют балл выше 180
+    int result2 = count_if(person.begin(), person.end(), person.front());
+    cout<<result2<<endl;
 }
 
 
