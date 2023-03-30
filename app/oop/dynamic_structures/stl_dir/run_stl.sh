@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 stack_stl.cpp -o stack_stl # 17++
-./stack_stl
-rm stack_stl
+clang++ -std=c++17 algo.cpp -o algo # 17++
+./algo
+rm algo
 
