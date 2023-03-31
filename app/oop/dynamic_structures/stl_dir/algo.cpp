@@ -34,6 +34,54 @@ public:
 };
 
 
+void copy_fun()
+{
+    /*
+    copy, copy_if - копирование набора элементов в другой (выборка)
+
+    back_inserter(struct) - помещает один набор в другой
+    */
+
+    
+    vector<Person> person{
+        Person("bob", 232),
+        Person("alice", 32),
+        Person("john", 22),
+        Person("bob", 126),
+        Person("mike", 172),
+    };
+
+    cout<<" === copy === "<<endl;
+
+    vector<Person> result;
+
+    copy(person.begin(), person.end(), back_inserter(result));
+    
+    for (auto elem : result)
+    {
+        cout<<elem.name<<"\t"<<elem.score<<endl;
+    }
+
+
+
+    cout<<" === copy_if === "<<endl;
+
+    vector<Person> result2;
+
+    copy_if(person.begin(), person.end(), back_inserter(result2), [](const Person &p)
+    {
+        // return p.name == "bob"; // создать новый набор из исходного, с условием, что имя будет 'bob'
+        return p.score <100; // если счет меньше 100
+    });
+
+    cout<<"size: "<<result2.size()<<endl;
+    
+    for (auto elem : result2)
+    {
+        cout<<elem.name<<"\t"<<elem.score<<endl;
+    }
+}
+
 void find_fun()
 {
     /*
@@ -195,6 +243,7 @@ void algo_fun()
 int main()
 {
     // algo_fun();
-    find_fun();
+    // find_fun();
+    copy_fun();
     return 0;
 }
