@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <list>
 using namespace std;
 
 
@@ -22,6 +23,34 @@ public:
         return p.score >180;
     }
 };
+
+void max_elem_fun()
+{
+    /*
+    max_element - поиск максимального элемента
+    */
+    cout<<" === max vector === "<<endl;
+    vector<int> v = {34,5,76,234,45,98,5};
+
+    auto result = max_element(v.begin(), v.end());
+
+    cout<<*result<<endl;
+
+    cout<<" === max list === "<<endl;
+    list<int> lst = {4,325,726,2,-45,938,-5};
+
+    auto result2 = max_element(lst.begin(), lst.end());
+
+    cout<<*result2<<endl;
+
+    cout<<" === max arr === "<<endl;
+    const int size = 7;
+    int arr[size] = {4,325,726,2,-45,2338,-5};
+
+    auto result3 = max_element(arr, arr+size);
+
+    cout<<*result3<<endl;
+}
 
 void remove_fun()
 {
@@ -74,6 +103,7 @@ void remove_fun()
 
 int main()
 {
-    remove_fun();
+    // remove_fun();
+    max_elem_fun();
     return 0;
 }
