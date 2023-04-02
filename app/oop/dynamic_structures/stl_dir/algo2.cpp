@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <vector>
 #include <list>
+#include <numeric> // для accumulate
 using namespace std;
 
 
@@ -23,6 +24,35 @@ public:
         return p.score >180;
     }
 };
+
+
+void accumulate_fun()
+{
+    /*
+    accumulate - сумма всех элементов набора
+    accumulate(начало_набора, конец_набора, к_чему_начать_прибавлять);
+
+    вместо v.begin(), v.end() можно использовать глобальные ф-и begin(v), end(v)
+    
+    next() - переключает на следующий элемент набора
+    */
+    cout<<" === sum vector === "<<endl;
+    vector<int> v = {1,2,3,4};
+
+    auto result = accumulate(begin(v), end(v), 0);
+
+    cout<<result<<endl;
+
+    cout<<" === mul vector === "<<endl;
+    vector<int> v2 = {1,2,3,4};
+
+    auto result2 = accumulate(begin(v2), end(v2), 1, [](int a, int b)
+    {
+        return a*b;
+    });
+
+    cout<<result2<<endl;
+}
 
 
 void min_elem_fun()
@@ -138,6 +168,7 @@ int main()
 {
     // remove_fun();
     // max_elem_fun();
-    min_elem_fun();
+    // min_elem_fun();
+    accumulate_fun();
     return 0;
 }
