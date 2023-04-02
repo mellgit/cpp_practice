@@ -24,6 +24,39 @@ public:
     }
 };
 
+
+void min_elem_fun()
+{
+    /*
+    min_element - поиск минимального элемента
+    minmax_element - поиск минимального и максимального элемента, возвращается набор (first-min, second-max)
+    */
+    cout<<" === max vector === "<<endl;
+    vector<int> v = {34,5,76,234,45,98,5};
+
+    auto result = min_element(v.begin(), v.end());
+    auto result1 = minmax_element(v.begin(), v.end());
+    cout<<"minmax: "<<*result1.first<<"\t"<<*result1.second<<endl;
+
+    cout<<*result<<endl;
+
+    cout<<" === max list === "<<endl;
+    list<int> lst = {4,325,726,2,-45,938,-5};
+
+    auto result2 = min_element(lst.begin(), lst.end());
+
+    cout<<*result2<<endl;
+
+    cout<<" === max arr === "<<endl;
+    const int size = 7;
+    int arr[size] = {4,325,726,2,-995,2338,-5};
+
+    auto result3 = min_element(arr, arr+size);
+
+    cout<<*result3<<endl;
+}
+
+
 void max_elem_fun()
 {
     /*
@@ -104,6 +137,7 @@ void remove_fun()
 int main()
 {
     // remove_fun();
-    max_elem_fun();
+    // max_elem_fun();
+    min_elem_fun();
     return 0;
 }
