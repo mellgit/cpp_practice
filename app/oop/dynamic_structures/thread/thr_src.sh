@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 thr_class.cpp -o thr_class # 17++
-./thr_class
-rm thr_class
+clang++ -std=c++17 thr_mutex.cpp -o thr_mutex # 17++
+./thr_mutex
+rm thr_mutex
 
