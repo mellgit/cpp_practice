@@ -26,6 +26,32 @@ public:
 };
 
 
+void equal_mismatch()
+{
+    /*
+    equal и mismatch - cравнение массивов
+    
+    equal - равенство наборов, возвращает bool
+    equal(begin(первого_набора), end(первого_набора), begin(второго_набора), end(второго_набора));
+    сравнивать можно разные наборы(list сравнить c vector и тп)
+    сравнивает по индексам каждого набора(arr[0] == arr2[0] => True)
+
+    mismatch - указывает на различие между наборами
+    */
+    cout<<" === max arr === "<<endl;
+    const int size = 7;
+    int arr[size] = {4,325,726,2,-995,2338,-5};
+    int arr2[size] = {4,325,726,2,-995,2338,-5};
+
+    auto result = equal(begin(arr), end(arr), begin(arr2), end(arr2));
+
+    cout<<result<<endl;
+
+
+}
+
+
+
 void accumulate_fun()
 {
     /*
@@ -169,6 +195,7 @@ int main()
     // remove_fun();
     // max_elem_fun();
     // min_elem_fun();
-    accumulate_fun();
+    // accumulate_fun();
+    equal_mismatch();
     return 0;
 }
