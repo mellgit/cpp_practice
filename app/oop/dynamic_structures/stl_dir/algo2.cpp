@@ -25,6 +25,47 @@ public:
     }
 };
 
+class Point
+{
+public:
+    int x; 
+    int y;
+    Point(int x, int y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+};
+
+void equal_predicate()
+{
+
+    vector<Point> arr = {
+        Point(1,4),
+        Point(13,42),
+        Point(41,54),
+    };
+
+    vector<Point> arr2 = {
+        Point(1,4),
+        Point(13,42),
+        Point(41,54),
+    };
+
+    bool result = equal(begin(arr), end(arr), begin(arr2), end(arr2), [](const Point &p1, const Point &p2)
+    {
+        /*
+        предикат вместо перегрузки оператора сравнения
+        если наборы будут одинаковые, но последовательноть разная, необходимо сначала отсортировать наборы
+        */
+        bool result = p1.x == p2.x && p1.y == p2.y;
+
+        return result;
+    });
+
+    cout<<result<<endl;
+
+}
 
 void equal_mismatch()
 {
@@ -196,6 +237,7 @@ int main()
     // max_elem_fun();
     // min_elem_fun();
     // accumulate_fun();
-    equal_mismatch();
+    // equal_mismatch();
+    equal_predicate();
     return 0;
 }
