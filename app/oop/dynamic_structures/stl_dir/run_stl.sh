@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 algo2.cpp -o algo2 # 17++
-./algo2
-rm algo2
+clang++ -std=c++17 algo3.cpp -o algo3 # 17++
+./algo3
+rm algo3
 
