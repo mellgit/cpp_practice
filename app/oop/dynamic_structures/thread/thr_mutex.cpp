@@ -10,6 +10,57 @@ mutex mtx;
 mutex mtx1;
 mutex mtx2;
 
+recursive_mutex rm;
+
+
+void foo(int a)
+{
+    rm.lock();
+    cout<<a<<" ";
+
+    this_thread::sleep_for(chrono::milliseconds(200));
+
+    if(a<=1)
+    {
+        cout<<endl;
+        rm.unlock();
+        return; // выход из ф-и
+
+    }
+    a--;
+    foo(a);
+    rm.unlock();
+}
+
+
+void recursive_mutex_fun()
+{
+    /*
+    recursive_mutex - рекурсивная блокировка 
+    захват рекурсивного mtx может происходить несколько раз, 
+    но освобождать придется столько же раз
+
+    exp:
+    rm.lock();
+    rm.lock();
+
+    rm.unlock();
+    rm.unlock();
+
+    если вместо rm использовать mtx в потоке, 
+    то получится, что в одном потоке возвался дважды один и тотже mtx,
+    что приведет к ошибке
+    */
+
+    thread t1(foo, 10);
+    thread t2(foo, 10);
+
+    t1.join();
+    t2.join();
+
+    
+}
+
 void print_1(char ch)
 {
     /*
@@ -209,6 +260,7 @@ int main()
     SimpleTimer st;
     // mutex_fun();
     // lock_guard_mutex();
-    dead_lock_mtx();
+    // dead_lock_mtx();
+    recursive_mutex_fun();
     return 0;
 }
