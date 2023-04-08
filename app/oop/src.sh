@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 functor.cpp -o functor # 17++
-./functor
-rm functor
+clang++ -std=c++17 $1.cpp -o $1 
+./$1
+rm $1
 

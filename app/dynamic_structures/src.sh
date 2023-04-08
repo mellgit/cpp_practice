@@ -1,5 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 doubly_linked_list.cpp -o doubly_linked_list # 17++
-./doubly_linked_list
-rm doubly_linked_list
+clang++ -std=c++17 $1.cpp -o $1 
+./$1
+rm $1
 

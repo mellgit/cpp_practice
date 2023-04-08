@@ -1,6 +1,5 @@
 #!/bin/bash
-clang++ -std=c++17 proc.cpp -o proc # 17++
-# g++ main.cpp -o main # 97++
-./proc
-rm proc
+clang++ -std=c++17 $1.cpp -o $1 
+./$1
+rm $1
 
