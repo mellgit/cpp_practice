@@ -10,8 +10,50 @@ mutex mtx;
 mutex mtx1;
 mutex mtx2;
 
+
 recursive_mutex rm;
 
+
+void print3(char ch)
+{
+    // unique_lock<mutex> ul(mtx); // тут отрабатывает метод lock()
+    unique_lock<mutex> ul(mtx, defer_lock); // позволяет использовать lock в любом другом месте
+
+    // тут работает параллельно
+    this_thread::sleep_for(chrono::milliseconds(2000));
+
+    ul.lock();
+    // тут работает в одном потоке
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            cout<<ch;
+            this_thread::sleep_for(chrono::milliseconds(10));
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+
+    ul.unlock();
+
+    this_thread::sleep_for(chrono::milliseconds(2000));
+}
+
+void unique_lock_mutex()
+{
+    /*
+    
+    */
+    thread t1(print3, '#');
+    thread t2(print3, '*');
+
+    t1.join();
+    t2.join();
+    
+    
+
+}
 
 void foo(int a)
 {
@@ -261,6 +303,7 @@ int main()
     // mutex_fun();
     // lock_guard_mutex();
     // dead_lock_mtx();
-    recursive_mutex_fun();
+    // recursive_mutex_fun();
+    unique_lock_mutex();
     return 0;
 }
