@@ -6,6 +6,24 @@
 using namespace std;
 
 
+
+void random_shuffle_fun()
+{
+    /*
+    random_shuffle - сортировка набора в случайном порядке
+    */
+
+    srand(time(NULL)); // для рандомной генерации
+    int arr[] = {1,2,3,4,5};
+
+    random_shuffle(begin(arr), end(arr)); // генерит всегда один и тотже "рандомный" порядок, если не добавлять srand
+    for(auto elem : arr)
+    {
+        cout<<elem<<endl;
+    }
+}
+
+
 void unique_fun()
 {
     /*
@@ -91,6 +109,7 @@ void for_each_fun()
 int main()
 {
     // for_each_fun();
-    unique_fun();
+    // unique_fun();
+    random_shuffle_fun();
     return 0;
 }
